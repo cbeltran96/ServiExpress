@@ -143,3 +143,12 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
+
+# Reset Password
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'mail.erikaavalos.cl'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'django@erikaavalos.cl'
+EMAIL_HOST_PASSWORD = '[t4^Tw=YmYZ.'
+DEFAULT_FROM_EMAIL = 'ServiExpress <noreply@ServiExpress.cl>'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

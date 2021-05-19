@@ -1,0 +1,32 @@
+{% extends 'usuario/base/base.html' %}
+{% load staticfiles %}
+
+{% block title %}Registrarse{% endblock %}
+
+{% block content %}
+<div id="registro">
+    <div class="jumbotron jumbotron-fluid">
+        <div class="row ml-0 mr-0">  
+            <div class="col-6 offset-3">
+                <div class="container">
+                    <h1 class="display-4">Registrarse</h1>
+                    <p class="lead">Registro de usuarios de Mobike</p>
+                </div>
+            </div>
+        </div>    
+    </div>
+    <div class="row ml-0 mr-0"> 
+        <div class="col-6 offset-3">
+            <form method="POST">
+                {% csrf_token %} {{ form.as_p }}
+                <div class="form-group nav justify-content-end">
+                    <button class="btn btn-primary" type="submit">Guardar</button>
+                </div>
+            </form>
+            <ul class="nav navbar justify-content-end pr-0">
+                <li><a class="btn btn-secondary" href="{% url 'login' %}">Iniciar Sesión</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

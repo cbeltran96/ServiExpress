@@ -37,9 +37,14 @@ Registro
         
         {{form.non_field_errors}}
 
+        <p class="text-right" ><a class="btn btn-link" href="{% url 'password_reset' %}">Olvidé mi contraseña</a></p>
+
         <div class="form-group">
             <input class="btn" type="submit" value="Enviar"/>
         </div>
+        <ul class="nav navbar justify-content-end pr-0">
+            <li><a class="btn btn-secondary" href="{% url 'registrar' %}">Registrarse</a></li>
+        </ul>
         
     </form>
 </div>

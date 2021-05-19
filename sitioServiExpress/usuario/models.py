@@ -20,6 +20,12 @@ class UsuarioManager(BaseUserManager):
         usuario.save()
         return usuario
         
+class Rol(models.Model):
+    nombre = models.CharField('Nombre Rol', max_length=50)
+    descripcion = models.CharField('Descripción', max_length=50)
+
+    def __str__(self):
+        return self.nombre
 
 
 class Usuario(AbstractBaseUser):
@@ -28,8 +34,9 @@ class Usuario(AbstractBaseUser):
     nombre = models.CharField('Nombre', max_length=200, blank= True, null= True)
     apellido = models.CharField('Apellido', max_length=200, blank= True, null= True)
     fecha_nacimiento = models.DateField('Fecha de nacimiento', auto_now=False, auto_now_add=False, blank= True, null= True)
-    usuario_activo = models.BooleanField(default = True)
+    is_active = models.BooleanField(default = True)
     usuario_administrador = models.BooleanField(default = True)
+    rol = models.ForeignKey(Rol, null= True, blank= True, on_delete=models.CASCADE)
     objects = UsuarioManager()
 
 
