@@ -1,5 +1,5 @@
 from django.contrib.auth.signals import user_logged_in
-from usuario.models import Usuario
+from .models import Usuario
 from django.views.generic import CreateView
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
