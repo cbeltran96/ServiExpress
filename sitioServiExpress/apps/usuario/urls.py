@@ -3,7 +3,7 @@ from . import views
 from .views import RegistroUsuario, UserList, UserUpdate
 
 urlpatterns = [
-    path('registrar', RegistroUsuario.as_view(), name="registrar"),
-    path('listar', UserList.as_view(), name="list_user"),
-    path('editar', UserUpdate.as_view(), name="editar_user"),
+    path('registrarUsuario', RegistroUsuario.as_view(), name="registrar_usuario"),
+    path('listarUsuarios', UserList.as_view(), name="listar_usuario"),
+    path('editarUsuario', UserUpdate.as_view(), name="editar_usuario"),
 ]
