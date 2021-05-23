@@ -22,7 +22,8 @@ from django.views.generic import TemplateView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('apps.usuario.urls')),
-	path('', include('apps.reserva.urls')),
+	path('', include('apps.cliente.urls')),
+    path('', include('apps.reserva.urls')),
    # path('login/', auth_views.LoginView.as_view(template_name = 'login.html'), name = 'login'),
 
    # Login and Logout

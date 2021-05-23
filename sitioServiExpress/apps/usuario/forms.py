@@ -26,7 +26,7 @@ class RegistroForm(forms.ModelForm):
     class Meta:
         model = Usuario
 
-        fields = ['username','nombre','apellido','email','fecha_nacimiento',]
+        fields = ['username','nombre','apellido','email','fecha_nacimiento', ]
 
         labels = {
             'username': 'Nombre de usuario',
@@ -34,16 +34,23 @@ class RegistroForm(forms.ModelForm):
             'apellido': 'Apellidos',
             'email': 'Correo',
             'fecha_nacimiento':'Fecha de nacimiento',
-            }
+        }
 
         widgets = {
             'username': forms.TextInput(attrs={'class': 'mb-2 form-control'}),
             'nombre': forms.TextInput(attrs={'class': 'mb-2 form-control'}),
             'apellido': forms.TextInput(attrs={'class': 'mb-2 form-control'}),
-            'email': forms.TextInput(attrs={'class': 'mb-2 form-control'}),
-            'fecha_nacimiento': forms.DateInput(attrs={'class': 'mb-2 form-control'}),
-            }
-    
+            'email': forms.EmailInput(attrs={'class': 'mb-2 form-control'}),
+            'fecha_nacimiento': forms.DateTimeInput(attrs={'class': 'mb-2 form-control', 'type': 'date' }, format='%m/%d/%Y',),
+        }
+
+        if Usuario.is_authenticated:
+            rol = forms.CharField(label= 'Rol asociado', widget= forms.Select(
+                attrs= {
+                    'class': 'form-control',
+                }
+            ))
+        
     def clean_password2(self):
         password1 = self.cleaned_data.get('password1')
         password2 = self.cleaned_data.get('password2')
