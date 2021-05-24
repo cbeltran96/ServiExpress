@@ -3,6 +3,7 @@ from django.shortcuts import render
 from .forms import ProductoForm
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
+from django.shortcuts import redirect
 # Create your views here.
 
 class ProductoCreate(CreateView):
@@ -21,8 +22,12 @@ class ProductoUpdate(UpdateView):
     template_name = 'Productos/agregar.html'
     success_url = reverse_lazy('list_producto')
 
-class ProductoDelete(DeleteView):
-    model = Producto
-    template_name = 'Registro/carrera_delete.html'
-    success_url = reverse_lazy('list_carreras')
+
+def borrar_producto(request, producto_id):
+    # Recuperamos la instancia de la carrera y la borramos
+    instancia = Producto.objects.get(id=producto_id)
+    instancia.delete()
+
+    # Después redireccionamos de nuevo a la lista
+    return redirect('list_producto')
 
