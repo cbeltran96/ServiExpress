@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"
+        integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    {% block content %}
+    {% if object_list %}
+    <div class="card">
+        <div class="card body">
+            <h2>Proveedores</h2>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card body">
+            {% for proveedor in object_list %}
+            <p>Id: {{ proveedor.id }}</p>
+            <p>Empresa: {{ proveedor.empresa }}</p>
+            <p>Rubro: {{ proveedor.rubro }}</p>
+            <p>Rut Empresa: {{ proveedor.rut_empresa }}</p>
+            <p>Email: {{ proveedor.email }}</p>
+            <p>Telefono: {{ proveedor.telefono }}</p>
+            <div class="d-flex">
+                <a class="btn btn-primary" href="{% url 'modificar_proveedor' proveedor.id %}">Editar</a>
+                <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{proveedor.id}}"
+                    >Eliminar</button>
+            </div>
+            <br>
+            <div class="modal fade" id="exampleModal{{proveedor.id}}" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalLabel{{proveedor.id}}" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel{{proveedor.id}}">Eliminar Proveedor</h5>
+                            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">Esta seguro que desea eliminar el proveedor llamado
+                            {{proveedor.empresa}}</div>
+                        <div class="modal-footer">
+                            <a href="{% url 'list_proveedor' %}">Cerrar</a>
+                            <a href="{% url 'eliminar_proveedor' proveedor.id %}">Eliminar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+            {% else %}
+            <h1>No hay registros de carrera</h1>
+            {% endif %}
+        </div>
+    </div>
+
+    {% endblock %}
+
+</body>
+
+</html>
