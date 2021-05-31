@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Reserva de hora{% endblock %}
+{% block extrastatic %}<link rel="stylesheet" href="{% static 'reserva/css/agregar_reserva.css' %}"/>{% endblock %}
+{% block content %}
+     <div class="jumbotron">
+        <div class="col-md-5">
+            <h1>Reserva de hora</h1>
+            <form id="formulario" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <!-- {{ form.as_p }} -->
+
+                {% for field in form %}
+                <div class="form-group" id="input{{forloop.counter}}">
+                    <label for="{{ field.name}}">{{ field.label_tag }}</label><br> {{ field }}
+                    <div class="bg-danger mt-1">{{ field.errors }}</div>
+                </div>
+                {% endfor %}
+
+
+                <input type="submit" value="Reservar" class="btn btn-success">
+
+            </form>
+        </div>
+        
+       <!-- Modal -->
+        <!-- The Modal -->
+        <div id="modalDays" class="modalDays">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h1>Seleccionar fecha de reserva</h1>
+                <form id="disponibilidad" method="GET">
+                <input type="hidden" name="date" id="hiddenInput" value="{{dateinput|default_if_none:'empty'}}">
+                <div class="modal-days">
+                    {% for day in days %}
+                        <div class="each-day" onclick="pasarDia('{{day|date:'Y-m-d'}}')">
+                            <p>{{day|date:"l"}}</p>
+                            <p>{{day|date:"d/m"}}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+                </form>
+            </div>
+
+        </div>
+        {{hour.id}}
+
+        <div id="modalHours" class="modalDays">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h1>Seleccionar hora de reserva</h1>
+
+                <div class="modal-days">
+                    {% for hour in hours %}
+                        <div class="each-day" onclick="pasarHora('{{hour}}')">
+                            <p>{{hour}}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+                </form>
+            </div>
+
+        </div>
+        <script src="{% static 'reserva/js/agregar_reserva.js' %}"></script>
+{% endblock %}
