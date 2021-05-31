@@ -24,6 +24,8 @@ urlpatterns = [
     path('', include('apps.usuario.urls')),
 	path('', include('apps.cliente.urls')),
     path('', include('apps.reserva.urls')),
+	path('proveedor/', include('apps.Proveedores.urls')),
+    path('productos/', include('apps.Productos.urls')),
    # path('login/', auth_views.LoginView.as_view(template_name = 'login.html'), name = 'login'),
 
    # Login and Logout

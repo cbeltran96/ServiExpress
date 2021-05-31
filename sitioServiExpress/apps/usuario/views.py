@@ -3,7 +3,7 @@ from .models import Usuario
 from django.views.generic import CreateView
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
-from .forms import RegistroForm
+from .forms import RegistroForm, RegistroPasswordForm
 
 # Create your views here.
 class RegistroUsuario(CreateView):
@@ -19,6 +19,6 @@ class UserList(ListView):
 
 class UserUpdate(UpdateView):
     model = Usuario
-    form_class = RegistroForm
+    form_class = RegistroPasswordForm
     template_name = 'usuario/user_form.html'
     success_url = reverse_lazy('listar_usuario') 
