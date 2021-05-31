@@ -26,19 +26,23 @@ SECRET_KEY = 'django-insecure-to-x)6oa*hka16^7n6@z1b^34kj5s!m!-!p)ww@k9vfmh$!s&4
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['192.168.1.86','localhost']
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
+    # 'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'apps.reserva',
+    'apps.Productos',
+    'apps.Proveedores',
+    'apps.usuario',
+	'apps.reserva',
+    'apps.pedidos',
 ]
 
 MIDDLEWARE = [
@@ -65,6 +69,10 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+
+            'libraries': { # Adding this section should work around the issue.
+                'staticfiles' : 'django.templatetags.static',
+            },
         },
     },
 ]
@@ -108,6 +116,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTH_USER_MODEL = 'usuario.Usuario'
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
@@ -133,5 +142,18 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'static', 'static-only')
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
+
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
+
+# Reset Password
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'mail.erikaavalos.cl'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'django@erikaavalos.cl'
+EMAIL_HOST_PASSWORD = '[t4^Tw=YmYZ.'
+DEFAULT_FROM_EMAIL = 'ServiExpress <noreply@ServiExpress.cl>'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
