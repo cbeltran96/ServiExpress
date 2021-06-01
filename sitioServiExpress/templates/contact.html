@@ -1,0 +1,163 @@
+{% load static %}
+<!doctype html>
+<html>
+
+
+
+<head>
+	<title>Taller Mecanico ServiExpress</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="" />
+	<script
+		type="application/x-javascript"> addEventListener("load", function() {setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+	<!meta charset utf="8">
+		<link rel="stylesheet" href="{%  static 'css/flexslider.css' %}" type="text/css" media="screen" />
+		<link rel="stylesheet" href="{%  static 'fontawesome-5.5/css/all.min.css' %}" />
+		<!--bootstrap-->
+		<link href="{%  static 'css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
+		<link href="{%  static 'css/style.css' %}" rel="stylesheet" type="text/css" />
+
+</head>
+{% load static %}
+
+<body>
+
+	<div class="header_nav" id="home">
+		<nav class="navbar navbar-default chn-gd">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+					data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+
+			</div>
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav navbar-right">
+					<li class="col-md-2">
+						<a href="{% url 'index'%}" class="blue">
+							<span class="" aria-hidden="true"></span>
+							Inicio
+						</a>
+					</li>
+					<!---->
+					<li class="col-md-2">
+						<a href="{% url 'services'%}" class="pink">
+							<span class="" aria-hidden="true"></span>
+							Servicio
+						</a>
+					</li>
+					<!---->
+					<li class="col-md-2">
+						<a href="{% url 'about'%}" class="orang">
+							<span class="" aria-hidden="true"></span>
+							Acerca de
+						</a>
+					</li>
+					<!---->
+					<li class="col-md-2">
+						<a href="{% url 'news'%}"class="gray">
+							<span class="" aria-hidden="true"></span>
+							Nuevo
+						</a>
+					</li>
+					<!---->
+					<li class="col-md-2">
+						<a href="{% url 'contact'%}"class="sky">
+							<span class="" aria-hidden="true"></span>
+							Contacto
+						</a>
+					</li>
+					<!-- argegar iniciar -->
+					<li class="col-md-2">
+						<a href="" class="green">
+							<span class="" aria-hidden="true"></span>
+							Iniciar sesion
+						</a>
+					</li>
+
+
+
+					<div class="clearfix">
+						<!--script de acerca de-->
+
+						<!--script-->
+				</ul>
+			</div>
+			<div class="clearfix"></div>
+
+		</nav>
+	</div>
+	<div class="container">
+		<div class="logo">
+			<h1><a href="{% url 'index'%}">Taller Mecanico ServiExpress</a></h1>
+		</div>
+		<div class="ad-ph">
+			<p>Contacto : <span>+569 </span>121321654564</p>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+	<!-- banner -->
+	<div class="banner-1">
+		<div class="container">
+			<h2>Contacto</h2>
+		</div>
+	</div>
+	<!-- /banner se agregan  -->
+	<!-- acerca de serviespress -->
+	<div class="about">
+		<div class="container">
+			<div class="about-top">
+				<div class="col-md-6 about-left">
+					<h3>NUESTRO CONTACTO </h3>
+					<h5>CORREO ELECTRONICO</h5>
+					<P>serviexprerss@gmail.com</p>
+					<h5>TELEFONO</h5>
+					<p> +569 121321654564</p>
+					<h5>DIRECCION</h5>
+					<p>#223 ESTACION CENTRAL .</p>
+				</div>
+
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</div>
+	</div>
+	<!-- termino ahora agregamos el  -->
+	<!-- footer -->
+	<div class="footer">
+		<div class="container">
+			<div class="col-md-3 footer-left">
+				<h3>TELEFONO</h3>
+				<p>+569123456789</p>
+			</div>
+			<div class="col-md-3 footer-left">
+				<h3>E-Mail CL</h3>
+				<p>Email : serviexprerss@gmail.com<a href=""></a></p>
+			</div>
+			<div class="col-md-3 footer-left">
+				<h3>REDES SOCIALES</h3>
+				<ul>
+					<li><a href="#"><i class="facebok"> </i></a></li>
+					<li><a href="#"><i class="twiter"> </i></a></li>
+					<li><a href="#"><i class="goog"> </i></a></li>
+					<li><a href="#"><i class="inst"> </i></a></li>
+					<div class="clearfix"></div>
+				</ul>
+			</div>
+			<div class="col-md-3 footer-left">
+				<h3>DIRECCION</h3>
+				<p>#223 ESTACION CENTRAL .</p>
+			</div>
+			<div class="clearfix"></div>
+			<div class="foot-bottom">
+				<p>Copyrights © 2021 TALLER SERVIEXPRESS <a href=""></a></p>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
