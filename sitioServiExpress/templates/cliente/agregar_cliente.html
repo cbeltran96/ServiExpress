@@ -1,18 +1,18 @@
-{% extends 'usuario/base/base.html' %}
+{% extends 'admin/base.html' %}
 {% load staticfiles %}
 
-{% block title %}Registrarse{% endblock %}
+{% block title %}Agregar Cliente{% endblock %}
 
 {% block content %}
-<div id="registro" class="container pt-4">
+<div class="container pt-4">
     <h1 class="display">Agregar nuevo cliente</h1>
     <p class="lead">Registro de clientes de ServiExpress</p>
-            <form method="POST">
-                {% csrf_token %} {{ form.as_p }}
-                <div class="form-group nav justify-content-end">
-                    <button class="btn btn-primary" type="submit">Guardar</button>
-                    <a href="#" class="btn btn-secondary">Volver</a>
-                </div>
-            </form>
+    <form method="POST">
+        {% csrf_token %} {{ form.as_p }}
+        <div class="form-group nav justify-content-end">
+            <button class="btn btn-primary" type="submit">Guardar</button>
+            <a href="{% url 'listar_clientes' %}" class="btn btn-secondary ml-2">Volver</a>
+        </div>
+    </form>
 </div>
 {% endblock %}

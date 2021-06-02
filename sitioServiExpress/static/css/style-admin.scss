@@ -1,5 +1,10 @@
 .nav {
     &.flex-column {
-        height: 100vh;
+        height: calc(100vh - 56px)
     }
+}
+
+.cont-admin {
+    overflow-y: scroll;
+    height: calc(100vh - 56px);
 }
