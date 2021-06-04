@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Confirmación{% endblock %}
+{% block extrastatic %}{% endblock %}
+{% block content %}
+    <div class="jumbotron">
+        <form method="post">
+            {% csrf_token %}
+
+            <p class="delete-msg">¿Estás seguro que quieres confimar la orden de pedido #{{orden.id}}?</p>
+
+            <a href="{% url 'listar_pedidos' %}" class="btn btn-secondary">NO</a>
+            <button class="btn btn-primary" type="submit">Si</button>
+        </form>
+    </div>
+{% endblock %}

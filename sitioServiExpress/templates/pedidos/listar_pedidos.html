@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Reservas{% endblock %}
+{% block extrastatic %}<link rel="stylesheet" href="{% static 'pedidos/css/listar_pedidos.css' %}"/>{% endblock %}
+{% block content %}
+ <h1>Ordenes de pedido</h1>
+  <a class="btn btn-primary" href="{% url 'agregar_pedido' %}">Agregar Pedido</a>
+     <div class="object_container">
+        {%if orden %}
+        {% regroup pedidos by fecha_orden as dates_items%}
+        {% for date in dates_items %}
+        <div class="each-day">
+            <div>
+                <h3 class="changelog-heading"><b>{{ date.grouper|date:"l d"  }} de {{ date.grouper|date:"F"  }}</b></h3>
+            </div>
+            {% for orden in date.list %}
+            <div oncontextmenu="openMenu('a{{orden.id}}',event);return false;" class="item">
+                <p>Orden de pedido #{{orden.id}} - {{ orden.fecha_orden }} - {{ orden.id_proveedor }}</p> 
+                <p>Creada por: {{orden.id_usuario.nombre}} {{orden.id_usuario.apellido}}</p>
+                <p>{%if orden.id_recepcion %}Entrega recepcionada por: {{orden.id_recepcion.id_usuario.nombre}} {{orden.id_recepcion.id_usuario.apellido}} con fecha: {{orden.id_recepcion.fecha_recepcion}}{% endif %}
+                <div class="menu" id="a{{orden.id}}">
+                    <div class="menu-item" onclick="location.href='{% url 'eliminar_pedido' orden.id %}';"; style="cursor: pointer;">
+                        <p><i class="fas fa-times"></i> Eliminar Pedido</p>
+                    </div>
+                     {%if not orden.id_recepcion %}
+                    <div class="menu-item" onclick="location.href='{% url 'modificar_pedido' orden.id %}';"; style="cursor: pointer;">
+                        <p><i class="fas fa-edit"></i> Modificar Pedido</p>
+                    </div>
+                    <div class="menu-item" onclick="location.href='{% url 'confirmar_pedido' orden.id %}';"; style="cursor: pointer;">
+                        <p><i class="fas fa-check"></i> Confirmar recepción de pedido</p>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            <script>
+            $(":not(#a{{orden.id}})").click(function() {
+                $("#a{{orden.id}}").hide();
+            });
+
+            </script>
+            {% endfor %}
+        </div>
+        {% endfor %}
+        {% else %}
+        <h3>No hay ordenes de pedido vigentes</h3>
+        {% endif %}
+        
+        <script src="{% static 'pedidos/js/listar_pedidos.js' %}"></script>
+
+{% endblock %}
