@@ -1,12 +1,13 @@
-{% extends 'base.html' %}
+{% extends 'admin/base.html' %} 
 {% load static %}
 
 {% block title %}Reserva de hora{% endblock %}
 {% block extrastatic %}<link rel="stylesheet" href="{% static 'reserva/css/agregar_reserva.css' %}"/>{% endblock %}
 {% block content %}
-     <div class="jumbotron">
+     <div >
         <div class="col-md-5">
-            <h1>Reserva de hora</h1>
+            <h1 class="display">Reserva de hora</h1>
+            <p class="lead">ServiExpress</p>
             <form id="formulario" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 <!-- {{ form.as_p }} -->
@@ -18,7 +19,7 @@
                 </div>
                 {% endfor %}
 
-
+                <a class="btn btn-secondary mr-1" onclick="window.history.go(-1); return false;">Volver</a>
                 <input type="submit" value="Reservar" class="btn btn-success">
 
             </form>

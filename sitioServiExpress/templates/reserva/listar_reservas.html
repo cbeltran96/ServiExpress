@@ -1,43 +1,64 @@
-{% extends 'base.html' %}
+{% extends 'admin/base.html' %}
 {% load static %}
 
 {% block title %}Reservas{% endblock %}
 {% block extrastatic %}<link rel="stylesheet" href="{% static 'reserva/css/listar_reservas.css' %}"/>{% endblock %}
 {% block content %}
- <h1>Reservas</h1>
-  <a class="btn btn-primary" href="{% url 'agregar_reserva' %}">Agregar Reserva</a>
-    {%if reservas %}
-     <div class="object_container">
-        {% regroup reservas by fecha_reserva as dates_items%}
-        {% for date in dates_items %}
-        <div class="each-day">
-            <div>
-                <h3 class="changelog-heading"><b>{{ date.grouper|date:"l d"  }} de {{ date.grouper|date:"F"  }}</b></h3>
-            </div>
-            {% for reserva in date.list %}
-            <div oncontextmenu="openMenu('a{{reserva.id}}',event);return false;">
-                <p>{{ reserva.hora_reserva }} - {{ reserva.detalle_reserva }}</p>
-                <div class="menu" id="a{{reserva.id}}">
-                    <div class="menu-item" onclick="location.href='{% url 'anular_reserva' reserva.id %}';"; style="cursor: pointer;">
-                        <p><i class="fas fa-times"></i> Anular Hora</p>
+<h1 class="display">Listado de Reservas</h1>
+<p class="lead">Registro de Reservas de ServiExpress</p>
+<a class="btn btn-primary mb-3" href="{% url 'agregar_reserva' %}">Agregar Reserva</a>
+{% if reservas %}
+    <div class="object_container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Fecha Reserva</th>
+                    <th scope="col">Hora Reserva</th>
+                    <th scope="col">Detalle Reserva</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% regroup reservas by fecha_reserva as dates_items%}
+                {% for date in dates_items %}
+                <tr>
+                    <th scope="row">{{ date.grouper|date:"l d"  }} de {{ date.grouper|date:"F"  }}</th>
+                    {% for reserva in date.list %}
+                    <td>{{ reserva.hora_reserva }}</td>
+                    <td>{{ reserva.detalle_reserva }}</td>
+                    <td>
+                        <a class="btn btn-outline-primary" href="{% url 'cambiar_reserva' reserva.id %}">Cambiar Hora</a>
+                        <a type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#exampleModal{{reserva.id}}">Eliminar</a>
+                    </td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <!-- Modal -->
+    {% for date in dates_items %}
+        {% for reserva in date.list %}
+        <div class="modal fade" id="exampleModal{{reserva.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel{{reserva.id}}" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel{{reserva.id}}">Anular Reserva</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
-                    <div class="menu-item" onclick="location.href='{% url 'cambiar_reserva' reserva.id %}';"; style="cursor: pointer;">
-                        <p><i class="fas fa-edit"></i> Cambiar Hora</p>
+                    <div class="modal-body">Esta seguro que desea anular la reserva #{{reserva.id}} {{ reserva.username }}</div>
+                    <div class="modal-footer">
+                        <a class="btn btn-primary" data-dismiss="modal" aria-label="Close">Cerrar</a>
+                        <a class="btn btn-danger" href="{% url 'anular_reserva' reserva.id %}">Anular Reserva</a>
                     </div>
                 </div>
             </div>
-            <script>
-            $(":not(#a{{reserva.id}})").click(function() {
-                $("#a{{reserva.id}}").hide();
-            });
-
-            </script>
-            {% endfor %}
         </div>
         {% endfor %}
-        
-        {% else %}
-        <h3>No hay reservas de hora vigentes</h3>
-        {% endif %}
-        <script src="{% static 'reserva/js/listar_reservas.js' %}"></script>
+    {% endfor %}
+{% else %}
+    <h3>No hay reservas de hora vigentes</h3>
+{% endif %}
 {% endblock %}

@@ -4,7 +4,7 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 # Create your models here.
 
 class UsuarioManager(BaseUserManager):
-    def create_user(self,email,username,nombre,apellido,password=None):
+    def create_user(self,email,username,nombre,apellido,password=None,):
         if not email:
             raise ValueError('El usuario debe tener un correo electrónico.')
         
@@ -37,7 +37,7 @@ class Usuario(AbstractBaseUser):
     fecha_nacimiento = models.DateField('Fecha de nacimiento', auto_now=False, auto_now_add=False, blank= True, null= True)
     is_active = models.BooleanField(default = True)
     usuario_administrador = models.BooleanField(default = False)
-    rol = models.ForeignKey(Rol, default=3, on_delete=models.CASCADE)
+    rol = models.ForeignKey(Rol, on_delete=models.CASCADE, default=3)
     objects = UsuarioManager()
 
 

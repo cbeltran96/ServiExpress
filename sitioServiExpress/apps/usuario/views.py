@@ -22,3 +22,7 @@ class UserUpdate(UpdateView):
     form_class = RegistroPasswordForm
     template_name = 'usuario/user_form.html'
     success_url = reverse_lazy('listar_usuario') 
+
+class UserDelete(DeleteView):
+    model = Usuario
+    success_url = reverse_lazy('listar_usuario') 

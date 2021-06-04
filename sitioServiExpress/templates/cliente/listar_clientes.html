@@ -24,7 +24,7 @@
                 <td>{{ clientes.email }}</td>
                 <td>
                     <a class="btn btn-outline-primary" href="{% url 'editar_cliente' clientes.id %}">Editar</a>
-                    {% if user.usuario_administrador %}
+                    {% if user.rol_id == 1 %}
                         <a type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#exampleModal{{clientes.id}}">Eliminar</a>
                     {% endif %}
                 </td>
