@@ -23,6 +23,7 @@ def pedido(request, orden_id):
     
 
 def agregar_pedido(request):
+
     if request.method == "POST":
         form = PedidoForm(request.POST)
         if form.is_valid():
