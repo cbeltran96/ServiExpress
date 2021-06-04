@@ -1,18 +1,266 @@
-<!-- home.html -->
-{% extends 'usuario/base/base.html' %} 
-{% comment %} {% extends 'base.html' %} {% endcomment %}
+{% load staticfiles %}
+<!doctype html>
+<html>
+<head>
+	<title>Taller Mecanico ServiExpress</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="" />
+	<script
+		type="application/x-javascript"> addEventListener("load", function() {setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 
-{% block title %}Home Page{% endblock title %}
+		<link rel="stylesheet" href="{%  static 'css/flexslider.css' %}" type="text/css" media="screen" />
+		<link rel="stylesheet" href="{%  static 'fontawesome-5.5/css/all.min.css' %}" />
+		<!--bootstrap-->
+		<link href="{%  static 'css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
+		<link href="{%  static 'css/style.css' %}" rel="stylesheet" type="text/css" />
 
-{% block content %} 
-    <h2>Home</h2>
-    {% if user.is_authenticated %}
-    <p>You are welcome on Home Page</p>
-    <p>Your name is - {{user.nombre}} {{user.apellido}}</p>
-    <p>Your email is - {{user.email}}</p>
-    <br><br>
-    <a href="{% url 'logout' %}">Logout</a>
-    {% else %}
-    <a href="{% url 'login' %}">Login</a>
-    {% endif %}
-{% endblock content %}
+
+
+
+</head>
+
+
+<body>
+
+	<div class="header_nav" id="home">
+		<nav class="navbar navbar-default chn-gd">
+
+			<!-- se marcan y alternan para mejor visualizacion -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+					data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+
+			</div>
+			<!-- se recopilan los formularios de navegacion (inicio, servicio, acerca de , contacto , nuevo "agregar inicio y registro ") -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav navbar-right">
+					<li class="col-md-2">
+						<a href="{% url 'home'%}" class="blue">
+							<span class="" aria-hidden="true"></span>
+							Inicio
+						</a>
+					</li>
+					<!---->
+					<li class="col-md-2">
+						<a href="{% url 'services'%}" class="pink">
+							<span class="" aria-hidden="true"></span>
+							Servicio
+						</a>
+					</li>
+					<!---->
+					<li class="col-md-2">
+						<a href="{% url 'about'%}" class="orang">
+							<span class="" aria-hidden="true"></span>
+							Acerca de
+						</a>
+					</li>
+					<!---->
+					<li class="col-md-2">
+						<a href="{% url 'news'%}" class="gray">
+							<span class="" aria-hidden="true"></span>
+							Nuevo
+						</a>
+					</li>
+					<!---->
+					<li class="col-md-2">
+						<a href="{% url 'contact'%}" class="sky">
+							<span class="" aria-hidden="true"></span>
+							Contacto
+						</a>
+					</li>
+					<!-- argegar iniciar -->
+					<li class="col-md-2">
+						<a href="{% url 'login' %}" class="green">
+							<span class="" aria-hidden="true"></span>
+							Iniciar sesion
+						</a>
+					</li>
+
+
+
+					<div class="clearfix">
+						<!--script-->
+						<script type="text/javascript">
+							jQuery(document).ready(function ($) {
+								$(".scroll").click(function (event) {
+									event.preventDefault();
+									$('html,body').animate({ scrollTop: $(this.hash).offset().top }, 900);
+								});
+							});
+						</script>
+						<!--script-->
+				</ul>
+			</div>
+			<div class="clearfix"></div>
+		</nav>
+	</div>
+	<div class="container">
+		<div class="logo">
+			<h1><a href="{% url 'home'%}">Taller Mecanico ServiExpress</a></h1>
+		</div>
+		<div class="ad-ph">
+			<p>CONTACTO : <span>+569</span>123456789</p>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+	<!-- ORGANIZADOR DE BANNER -->
+	<div class="banner">
+		<div class="container">
+
+			<div class="banner-info">
+				<h2>TALLER SERVIEXPRESS</h2>
+			</div>
+		</div>
+	</div>
+	<!-- imagenes de autos , responsive -->
+	<div class="our">
+		<div class="container">
+			<div class="our-top">
+				<li><img src="{% static 'images/b1.jpg' %}" class="img-responsive" alt=""></li>
+				<li><img src="{% static 'images/b6.jpg' %}" class="img-responsive" alt=""></li>
+				<li><img src="{% static 'images/b8.jpg' %}" class="img-responsive" alt=""></li>
+				<li><img src="{% static 'images/b7.jpg' %}" class="img-responsive" alt=""></li>
+				<li><img src="{% static 'images/b6.jpg' %}" class="img-responsive" alt=""></li>
+				<li><img src="{% static 'images/b7.jpg' %}" class="img-responsive" alt=""></li>
+				<li><img src="{% static 'images/b8.jpg' %}" class="img-responsive" alt=""></li>
+				<li><img src="{% static 'images/b7.jpg' %}" class="img-responsive" alt=""></li>
+				<li><img src="{% static 'images/b1.jpg' %}" class="img-responsive" alt=""></li>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</div>
+	<div class="high">
+		<div class="container">
+			<div class="col-md-6 high-left">
+				<img src="{% static 'images/img7.jpg' %}" class="img-responsive" alt="">
+			</div>
+			<div class="col-md-6 high-right">
+				<h3>ALTA CALIDAD</h3>
+				<h5>EN SERVICIOS PROFESIONALES EN MECANICA AUTOMOTRIZ</h3>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+
+
+	<!-- sobre nosotros  -->
+	<div class="over">
+		<div class="container">
+			<div class="col-md-8 over-left">
+				<h3>SOBRE NUESTRO TRABAJO</h3>
+				<P>Estamos en el negocio de entregar soluciones Consistentes y Eficientes a sus necesidades de
+					Mantencion, Reparacion y Diganostico de su Vehiculo Particular.
+					Nuestros Tecnicos Especialistas y Equipo de Atencion al Cliente reafirman día a día el compromiso de
+					entregar nada menos que la Excelencia en Servicio y la mejor experiencia en resolución de Problemas.
+					Nuestro secreto es el foco absoluto en el Servicio al Cliente, Soporte y Garantia.</p>
+			</div>
+
+
+
+
+			<!-- FlexSlider revisar -->
+			<script defer="" src="{% static 'js/jquery.flexslider.js' %}"></script>
+			<script type="text/javascript">
+				$(function () {
+					SyntaxHighlighter.all();
+				});
+				$(window).load(function () {
+					$('.flexslider').flexslider({
+						animation: "slide",
+						start: function (slider) {
+							$('body').removeClass('loading');
+						}
+					});
+				});
+			</script>
+
+			<!-- FlexSlider -->
+
+		</div>
+	</div>
+	<div class="clearfix"> </div>
+	</div>
+	</div>
+	<!-- over -->
+	<div class="team">
+		<div class="container">
+			<div class="col-md-3 team-left">
+				<img src="{% static 'images/img5.jpg' %}" class="img-responsive" alt="">
+			</div>
+			<div class="col-md-3 team-left">
+				<img src="{% static 'images/img3.jpg' %}" class="img-responsive" alt="">
+			</div>
+			<div class="col-md-3 team-left">
+				<img src="{% static 'images/img4.jpg' %}" class="img-responsive" alt="">
+			</div>
+			<div class="col-md-3 team-left">
+				<img src="{% static 'images/img2.jpg' %}" class="img-responsive" alt="">
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+	<!-- expert -->
+	<div class="expert">
+		<div class="container">
+			<div class="col-md-4 expert-left">
+				<h3>Servicio experto por los mejores técnicos</h3>
+				<P> Tenemos un equipo de trabajo con el mejor estudio en mecanica automotriz</P>
+			</div>
+			<div class="col-md-4 expert-left">
+				<img src="{% static 'images/img6.jpg' %}" class="img-responsive" alt="">
+			</div>
+			<div class="col-md-4 expert-left">
+				<h3>El más alto nivel de reparación de coches</h3>
+				<P>En el mercado de chile tenemos la mejor reparacion en automoviles y es donde nuestra tecnologia entra
+					en cada reparacion</P>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+
+	</div><!-- row ending -->
+	<a href="https://wa.me/+569000000?text=Hola,%20tiene%20alguna%20hora%20disponible?" class="float" target="_blank">
+		<i class="fa-2x fab fa-whatsapp" width="20%" height="20%"></i>
+	</a>
+	</div>
+
+	<!-- footer -->
+	<div class="footer">
+		<div class="container">
+			<div class="col-md-3 footer-left">
+				<h3>TELEFONO</h3>
+				<p>+569123456789</p>
+			</div>
+			<div class="col-md-3 footer-left">
+				<h3>E-Mail CL</h3>
+				<p>Email : serviexprerss@gmail.com<a href=""></a></p>
+			</div>
+			<div class="col-md-3 footer-left">
+				<h3>REDES SOCIALES</h3>
+				<ul>
+					<li><a href="#"><i class="facebok"> </i></a></li>
+					<li><a href="#"><i class="twiter"> </i></a></li>
+					<li><a href="#"><i class="goog"> </i></a></li>
+					<li><a href="#"><i class="inst"> </i></a></li>
+					<div class="clearfix"></div>
+				</ul>
+			</div>
+			<div class="col-md-3 footer-left">
+				<h3>DIRECCION</h3>
+				<p>#223 ESTACION CENTRAL .</p>
+			</div>
+			<div class="clearfix"></div>
+			<div class="foot-bottom">
+				<p>Copyrights © 2021 TALLER SERVIEXPRESS <a href=""></a></p>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

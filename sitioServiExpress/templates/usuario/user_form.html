@@ -1,0 +1,17 @@
+{% extends 'usuario/base/base.html' %}
+{% load staticfiles %}
+
+{% block title %}Registrarse{% endblock %}
+
+{% block content %}
+<div id="registro">
+    <h1 class="display-4">Editor</h1>
+    <p class="lead">Registro de usuarios de ServiExpress</p>
+    <form method="POST">
+        {% csrf_token %} {{ form.as_p }}
+        <div class="form-group nav justify-content-end">
+            <button class="btn btn-primary" type="submit">Guardar</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

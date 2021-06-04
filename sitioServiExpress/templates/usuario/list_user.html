@@ -1,4 +1,4 @@
-{% extends 'usuario/base/base.html' %} 
+{% extends 'admin/base.html' %} 
 
 {% block titulo_principal %} CRUD: Select * {% endblock %}
 
@@ -7,7 +7,6 @@
         {% for user in object_list %}
             <p>Nombre: {{ user.username }}</p>
             <p>email: {{ user.email }}</p>      
-
             <br>
         {% endfor %}
         

@@ -20,8 +20,10 @@ from django.contrib.auth.views import LoginView, LogoutView, PasswordResetView, 
 from django.views.generic import TemplateView
 
 urlpatterns = [
-    # path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls),
     path('', include('apps.usuario.urls')),
+    path('', include('apps.mainpage.urls')),
+    path('', include('apps.cliente.urls')),
 	path('reservas/', include('apps.reserva.urls')),
     path('pedidos/', include('apps.pedidos.urls')),
     path('proveedor/', include('apps.Proveedores.urls')),

@@ -17,6 +17,7 @@ class UsuarioManager(BaseUserManager):
     def create_superuser(self,username,email,nombre,apellido,password):
         usuario = self.create_user(email, username = username, nombre = nombre, apellido = apellido, password = password)
         usuario.usuario_administrador = True
+        usuario.rol = 1
         usuario.save()
         return usuario
         
@@ -35,8 +36,8 @@ class Usuario(AbstractBaseUser):
     apellido = models.CharField('Apellido', max_length=200, blank= True, null= True)
     fecha_nacimiento = models.DateField('Fecha de nacimiento', auto_now=False, auto_now_add=False, blank= True, null= True)
     is_active = models.BooleanField(default = True)
-    usuario_administrador = models.BooleanField(default = True)
-    rol = models.ForeignKey(Rol, null= True, blank= True, on_delete=models.CASCADE)
+    usuario_administrador = models.BooleanField(default = False)
+    rol = models.ForeignKey(Rol, default=3, on_delete=models.CASCADE)
     objects = UsuarioManager()
 
 

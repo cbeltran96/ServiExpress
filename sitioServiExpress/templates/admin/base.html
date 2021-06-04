@@ -1,0 +1,72 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin {% block title %}Document {% endblock %}</title>
+    
+    <link rel="stylesheet" href="{% static 'css/bootstrap2.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style-admin.css' %}">
+    
+    {% block extrastatic %}
+    {% endblock %}
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">ServiExpress</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+             {% if user.is_authenticated %}
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Usuario {{user.nombre}} {{user.apellido}}
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+                  {% else %}
+                  <a class="dropdown-item" href="{% url 'login' %}">Login</a>
+                    {% endif %}
+              </div>
+          </li>
+      </ul>
+  </div>
+</nav>
+
+    <div class="row mr-0">
+        <div class="col-2">
+            <ul class="nav flex-column navbar-dark bg-dark">
+                {% if user.rol_id == 2 or user.rol_id == 1 %}
+                <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+                    {% if user.rol_id == 1 %}
+                    <li class="nav-item"><a class="nav-link" href="#">Usuarios</a></li>
+                    {% endif %}
+                <li class="nav-item"><a class="nav-link" href="{% url 'listar_clientes' %}">Clientes</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Empleados</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'list_proveedor' %}">Proveedores</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'listar_reservas' %}">Reservas</a></li>
+                {% endif %}
+                {% if user.rol_id == 3 %}
+                <li class="nav-item"><a class="nav-link" href="#">Ralizar Reserva</a></li>
+                {% endif %}
+            </ul>
+        </div>
+        <div class="col-10 pt-4 pb-4 cont-admin">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+
+
+    
+    
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+</body>
+</html>
