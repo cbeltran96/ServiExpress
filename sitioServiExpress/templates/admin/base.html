@@ -41,11 +41,10 @@
     <div class="row mr-0">
         <div class="col-2">
             <ul class="nav flex-column navbar-dark bg-dark">
-                {% if user.rol_id == 2 or user.rol_id == 1 %}
+                
                 <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
-                    {% if user.rol_id == 1 %}
-                    <li class="nav-item"><a class="nav-link" href="{% url 'listar_usuario' %}">Usuarios</a></li>
-                    {% endif %}
+                <li class="nav-item"><a class="nav-link" href="{% url 'listar_usuario' %}">Usuarios</a></li>
+                {% if user.rol_id == 2 or user.rol_id == 1 %}
                 <li class="nav-item"><a class="nav-link" href="{% url 'listar_clientes' %}">Clientes</a></li>
                 <!-- <li class="nav-item"><a class="nav-link" href="#">Empleados</a></li> -->
                 <li class="nav-item"><a class="nav-link" href="{% url 'list_producto' %}">Productos</a></li>
