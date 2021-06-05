@@ -7,7 +7,7 @@
 <h1 class="display">Listado de Ordenes de pedido</h1>
 <p class="lead">Registro de pedidos de ServiExpress</p>
 <a class="btn btn-primary mb-3" href="{% url 'agregar_pedido' %}">Agregar Pedido</a>
-{% if orden %}
+
     <div class="object_container">
         <table class="table">
             <thead>
@@ -29,8 +29,9 @@
                     <td>{{orden.id_usuario.nombre}} {{orden.id_usuario.apellido}}</td>
                     <td>{%if orden.id_recepcion %} {{orden.id_recepcion.id_usuario.nombre}} {{orden.id_recepcion.id_usuario.apellido}} con fecha: {{orden.id_recepcion.fecha_recepcion}}{% endif %}</td>
                     <td>
-                        <a class="btn btn-outline-primary" href="{% url 'confirmar_pedido' orden.id %}">Confirmar recepción de pedido</a>
+                        
                         {%if not orden.id_recepcion %}
+                        <a class="btn btn-outline-primary" href="{% url 'confirmar_pedido' orden.id %}">Confirmar recepción de pedido</a>
                         <a class="btn btn-outline-primary" href="{% url 'modificar_pedido' orden.id %}">Modificar Pedido</a>
                         {% endif %}
                         <a type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#exampleModal{{orden.id}}"
@@ -63,12 +64,11 @@
                 </div>
             </div>
             {% endfor %}
-            {% endfor %}
+        {% endfor %}
         
-        {% else %}
-        <h3>No hay ordenes de pedido vigentes</h3>
-   
-        {% endif %}
+
+        <!-- <h3>No hay ordenes de pedido vigentes</h3> -->
+
     </div>
 <script src="{% static 'pedidos/js/listar_pedidos.js' %}"></script>
 {% endblock %}
