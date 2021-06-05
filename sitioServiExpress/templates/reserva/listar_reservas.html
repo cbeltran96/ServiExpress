@@ -19,7 +19,7 @@
                 </tr>
             </thead>
             <tbody>
-                {% regroup reservas by fecha_reserva as dates_items%}
+                {% regroup reservas by fecha_reserva as dates_items %}
                 {% for date in dates_items %}
                 <tr>
                     <th scope="row">{{ date.grouper|date:"l d"  }} de {{ date.grouper|date:"F"  }}</th>

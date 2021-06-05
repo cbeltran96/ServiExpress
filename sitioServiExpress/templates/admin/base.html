@@ -50,6 +50,7 @@
                 <!-- <li class="nav-item"><a class="nav-link" href="#">Empleados</a></li> -->
                 <li class="nav-item"><a class="nav-link" href="{% url 'list_producto' %}">Productos</a></li>
                 <li class="nav-item"><a class="nav-link" href="{% url 'list_proveedor' %}">Proveedores</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'listar_pedidos' %}">Pedidos</a></li>
                 <li class="nav-item"><a class="nav-link" href="{% url 'listar_reservas' %}">Reservas</a></li>
                 {% endif %}
                 {% if user.rol_id == 3 %}

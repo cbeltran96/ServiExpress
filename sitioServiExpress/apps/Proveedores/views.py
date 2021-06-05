@@ -9,7 +9,7 @@ from django.shortcuts import render, get_object_or_404
 class ProveedorCreate(CreateView):
     model = Proveedor
     form_class = ProveedorForm
-    template_name = 'Productos/agregar.html'
+    template_name = 'Proveedores/agregar.html'
     success_url = reverse_lazy("list_proveedor")#agregar redirigir a la lista de proveedor
 
 class ProveedorList(ListView):
@@ -20,7 +20,7 @@ class ProveedorList(ListView):
 class ProveedorUpdate(UpdateView):
     model = Proveedor
     form_class = ProveedorForm
-    template_name = 'Productos/agregar.html'
+    template_name = 'Proveedores/agregar.html'
     success_url = reverse_lazy('list_proveedor')
 
 def proveedor_detail(request, pk):
