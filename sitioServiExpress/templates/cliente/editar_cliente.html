@@ -10,8 +10,8 @@
     <form method="POST">
         {% csrf_token %} {{ form.as_p }}
         <div class="form-group nav justify-content-end">
+            <a class="btn btn-secondary mr-1" onclick="window.history.go(-1); return false;">Volver</a>
             <button class="btn btn-primary" type="submit">Guardar</button>
-            <a href="{% url 'listar_clientes' %}" class="btn btn-secondary ml-2">Volver</a>
         </div>
     </form>
 </div>

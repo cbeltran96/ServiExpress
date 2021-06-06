@@ -44,7 +44,6 @@ def agregar_reserva(request):
         form = ReservaForm(request.POST)
         if form.is_valid():
             model_instance = form.save(commit=False)
-            model_instance.id_usuario = request.user
             model_instance.save()
             return redirect("listar_reservas")
                 

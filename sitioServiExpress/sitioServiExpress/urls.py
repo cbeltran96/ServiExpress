@@ -20,7 +20,7 @@ from django.contrib.auth.views import LoginView, LogoutView, PasswordResetView, 
 from django.views.generic import TemplateView
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    
     path('', include('apps.usuario.urls')),
     path('', include('apps.mainpage.urls')),
     path('', include('apps.cliente.urls')),
@@ -28,7 +28,7 @@ urlpatterns = [
     path('pedidos/', include('apps.pedidos.urls')),
     path('proveedor/', include('apps.Proveedores.urls')),
     path('productos/', include('apps.Productos.urls')),
-   # path('login/', auth_views.LoginView.as_view(template_name = 'login.html'), name = 'login'),
+    path('admin/', admin.site.urls),
 
    # Login and Logout
     path('login/', LoginView.as_view(redirect_authenticated_user=True,template_name='usuario/login.html'), name='login'),

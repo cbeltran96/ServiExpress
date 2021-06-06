@@ -1,10 +1,10 @@
-{% extends 'base.html' %}
+{% extends 'admin/base.html' %}
 {% load static %}
 
 {% block title %}Confirmación{% endblock %}
 {% block extrastatic %}{% endblock %}
 {% block content %}
-    <div class="jumbotron">
+    <div >
         <form method="post">
             {% csrf_token %}
 

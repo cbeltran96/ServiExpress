@@ -7,6 +7,7 @@
 <div class="container pt-4">
     <h1 class="display">Listado de Clientes</h1>
     <p class="lead">Registro de clientes de ServiExpress</p>
+    <a class="btn btn-primary mb-3" href="{% url 'agregar_cliente' %}">Agregar Cliente</a>
     <table class="table">
         <thead>
             <tr>
@@ -24,7 +25,7 @@
                 <td>{{ clientes.email }}</td>
                 <td>
                     <a class="btn btn-outline-primary" href="{% url 'editar_cliente' clientes.id %}">Editar</a>
-                    {% if user.usuario_administrador %}
+                    {% if user.rol_id == 1 %}
                         <a type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#exampleModal{{clientes.id}}">Eliminar</a>
                     {% endif %}
                 </td>
