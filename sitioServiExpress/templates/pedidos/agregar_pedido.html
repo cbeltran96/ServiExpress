@@ -1,0 +1,27 @@
+{% extends 'admin/base.html' %}
+{% load static %}
+
+{% block title %}Pedidos{% endblock %}
+{% block extrastatic %}{% endblock %}
+{% block content %}
+     <div>
+        <div class="col-md-5">
+            <h1>Pedidos</h1>
+            <form id="formulario" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <!-- {{ form.as_p }} -->
+
+                {% for field in form %}
+                <div class="form-group" id="input{{forloop.counter}}">
+                    <label for="{{ field.name}}">{{ field.label_tag }}</label><br> {{ field }}
+                    <div class="bg-danger mt-1">{{ field.errors }}</div>
+                </div>
+                {% endfor %}
+
+
+                <input type="submit" value="Continuar" class="btn btn-success">
+
+            </form>
+        </div>
+        
+{% endblock %}

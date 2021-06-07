@@ -1,0 +1,198 @@
+{% load static %}
+<!doctype html>
+<html>
+
+
+
+<head>
+	<title>Taller Mecanico ServiExpress</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="" />
+	<script
+		type="application/x-javascript"> addEventListener("load", function() {setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+	<!meta charset utf="8">
+		<link rel="stylesheet" href="{%  static 'css/flexslider.css' %}" type="text/css" media="screen" />
+		<link rel="stylesheet" href="{%  static 'fontawesome-5.5/css/all.min.css' %}" />
+		<!--bootstrap-->
+		<link href="{%  static 'css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
+		<link href="{%  static 'css/style.css' %}" rel="stylesheet" type="text/css" />
+
+
+</head>
+{% load static %}
+
+<body>
+
+	<div class="header_nav" id="home">
+		<nav class="navbar navbar-default chn-gd">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+					data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+
+			</div>
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav navbar-right">
+					<li class="col-md-2">
+						<a href="{% url 'index'%}" class="blue">
+							<span class="" aria-hidden="true"></span>
+							Inicio
+						</a>
+					</li>
+					<!---->
+					<li class="col-md-2">
+						<a href="{% url 'services'%}" class="pink">
+							<span class="" aria-hidden="true"></span>
+							Servicio
+						</a>
+					</li>
+					<!---->
+					<li class="col-md-2">
+						<a href="{% url 'about'%}" class="orang">
+							<span class="" aria-hidden="true"></span>
+							Acerca de
+						</a>
+					</li>
+					<!---->
+					<li class="col-md-2">
+						<a href="{% url 'news'%}"class="gray">
+							<span class="" aria-hidden="true"></span>
+							Nuevo
+						</a>
+					</li>
+					<!---->
+					<li class="col-md-2">
+						<a href="{% url 'contact'%}"class="sky">
+							<span class="" aria-hidden="true"></span>
+							Contacto
+						</a>
+					</li>
+					<!-- argegar iniciar -->
+					<li class="col-md-2">
+						<a href="" class="green">
+							<span class="" aria-hidden="true"></span>
+							Iniciar sesion
+						</a>
+					</li>
+
+
+					<div class="clearfix">
+						<!--script de acerca de-->
+						<script type="text/javascript">
+							jQuery(document).ready(function ($) {
+								$(".scroll").click(function (event) {
+									event.preventDefault();
+									$('html,body').animate({ scrollTop: $(this.hash).offset().top }, 900);
+								});
+							});
+						</script>
+						<!--script-->
+				</ul>
+			</div>
+			<div class="clearfix"></div>
+
+		</nav>
+	</div>
+	<div class="container">
+		<div class="logo">
+			<h1><a href="{% url 'index'%}">Taller Mecanico ServiExpress</a></h1>
+		</div>
+		<div class="ad-ph">
+			<p>Contacto : <span>+569 </span>123456789</p>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+	<!-- banner -->
+	<div class="banner-1">
+		<div class="container">
+			<h2>Acerca De</h2>
+		</div>
+	</div>
+	<!-- /banner se agregan  -->
+	<!-- acerca de serviespress -->
+	<div class="about">
+		<div class="container">
+			<div class="about-top">
+				<div class="col-md-6 about-left">
+					<h3> ACERCA DE NOSOTROS </h3>
+					<h5> MISION CON EL CLIENTE </h5>
+					<P>Ofrecer el mejor servicio para nuestros clientes y dar nuestra mayor claridad al momento de
+						trabajar </p>
+					<h5> MISION CON NUESTRO TRABAJO </h5>
+					<P>Ofrecer el mejor servicio de mantenimiento automotriz caracgterizado por nuestra calidad</p>
+
+				</div>
+				<div class="col-md-6 about-right">
+					<h3>ESPECIALISTAS EN AUTOMOVILES</h3>
+					<h5> VISION </h5>
+					<ul>
+						<li><a href="#"><span></span>Trabajo en equipo </a></li>
+						<li><a href="#"><span></span>Compormiso</a></li>
+						<li><a href="#"><span></span>Lealtad</a></li>
+						<li><a href="#"><span></span>Rsponsabilidad</a></li>
+						<li><a href="#"><span></span>Honestidad</a></li>
+					</ul>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+			<div class="about-bottom">
+				<h3>¿Por qué es importante el mantenimiento? </h3>
+				<div class="col-md-4 abt-lt">
+					<img src="/static/images/img8.jpg" class="img-responsive" alt="">
+				</div>
+				<div class="col-md-8 abt-rg">
+					<h5> NUESTRO TRABAJO </h5>
+					<P>¿Por qué es importante el mantenimiento? </p>
+					<P>Para mantener tu auto en las mejores condiciones por el mayor tiempo posible, brindarle
+						mantenimiento periódicamente es sumamente importante. La mejor opción para hacerlo es en tu
+						agencia de autos más cercana, pero antes de dirigirte a agendar tu próxima cita si tienes dudas
+						aquí te ayudamos a resolverlas.
+
+						En primer lugar debes saber que el objetivo de darle mantenimiento a tu automóvil es para evitar
+						los daños por causa del desgaste de sus componentes por el manejo diario, revisando cada cierto
+						número de kilómetros todos los elementos del vehículo, como el sistema de frenos, el sistema de
+						refrigeración, suspensiones, sistema eléctrico, neumáticos y otros.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- termino ahora agregamos el  -->
+	<!-- footer -->
+	<div class="footer">
+		<div class="container">
+			<div class="col-md-3 footer-left">
+				<h3>TELEFONO</h3>
+				<p>+569123456789</p>
+			</div>
+			<div class="col-md-3 footer-left">
+				<h3>E-Mail CL</h3>
+				<p>Email : serviexprerss@gmail.com<a href=""></a></p>
+			</div>
+			<div class="col-md-3 footer-left">
+				<h3>REDES SOCIALES</h3>
+				<ul>
+					<li><a href="#"><i class="facebok"> </i></a></li>
+					<li><a href="#"><i class="twiter"> </i></a></li>
+					<li><a href="#"><i class="goog"> </i></a></li>
+					<li><a href="#"><i class="inst"> </i></a></li>
+					<div class="clearfix"></div>
+				</ul>
+			</div>
+			<div class="col-md-3 footer-left">
+				<h3>DIRECCION</h3>
+				<p>#223 ESTACION CENTRAL .</p>
+			</div>
+			<div class="clearfix"></div>
+			<div class="foot-bottom">
+				<p>Copyrights © 2021 TALLER SERVIEXPRESS <a href=""></a></p>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

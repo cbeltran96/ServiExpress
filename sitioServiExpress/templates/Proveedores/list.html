@@ -1,0 +1,66 @@
+{% extends 'admin/base.html' %} 
+
+{% block title %}Proveedores{% endblock %}
+
+{% block content %}
+    {% if user %}
+    <div class="container pt-4">
+        <h1 class="display">Listado de Proveedores</h1>
+        <p class="lead">Registro de proveedores de ServiExpress</p>
+        <a class="btn btn-primary mb-3" href="{% url 'agregar_proveedor' %}">Agregar Proveedores</a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Empresa</th>
+                    <th scope="col">Rubro</th>
+                    <th scope="col">Rut Empresa</th>
+                   <!-- <th>Email: </th>-->
+                   <!-- <th>Telefono: </th> -->
+                   <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for proveedor in object_list %}
+                <tr>
+                    <th>{{ proveedor.id }}</th>
+                    <td>{{ proveedor.empresa }}</td>
+                    <td>{{ proveedor.rubro }}</td>
+                    <td>{{ proveedor.rut_empresa }}</td>
+                    <td><a class="btn btn-outline-primary" href="{% url 'modificar_proveedor' proveedor.id %}">Editar</a>
+                        <a type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#exampleModal{{proveedor.id}}"
+                            >Eliminar</a></td>
+                    <!-- <td>{{ proveedor.email }}</td>
+                    <td>{{ proveedor.telefono }}</td> -->
+                </tr>
+                {% endfor %}
+            </tbody>
+            </table>
+            {% for proveedor in object_list %}
+            <div class="modal fade" id="exampleModal{{proveedor.id}}" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalLabel{{proveedor.id}}" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel{{proveedor.id}}">Eliminar Proveedor</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">Esta seguro que desea eliminar el proveedor llamado
+                            {{proveedor.empresa}}</div>
+                        <div class="modal-footer">
+                            <a class="btn btn-primary" data-dismiss="modal" aria-label="Close" href="{% url 'list_proveedor' %}">Cerrar</a>
+                            <a class="btn btn-danger" href="{% url 'eliminar_proveedor' proveedor.id %}">Eliminar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+    {% else %}
+    <h1>No hay registros de proveedores</h1>
+    </div>
+    
+{% endif %}
+
+{% endblock %}

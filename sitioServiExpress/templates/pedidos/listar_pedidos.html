@@ -1,0 +1,74 @@
+{% extends 'admin/base.html' %}
+{% load static %}
+
+{% block title %}Pedidos{% endblock %}
+{% block extrastatic %}<link rel="stylesheet" href="{% static 'pedidos/css/listar_pedidos.css' %}"/>{% endblock %}
+{% block content %}
+<h1 class="display">Listado de Ordenes de pedido</h1>
+<p class="lead">Registro de pedidos de ServiExpress</p>
+<a class="btn btn-primary mb-3" href="{% url 'agregar_pedido' %}">Agregar Pedido</a>
+
+    <div class="object_container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Orden de pedido</th>
+                    <th scope="col">Creada por</th>
+                    <th scope="col">Entrega recepcionada por</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% regroup pedidos by fecha_orden as dates_items %}
+                {% for date in dates_items %}
+                <tr>
+                    <th scope="row">{{ date.grouper|date:"l d"  }} de {{ date.grouper|date:"F"  }}</th>
+                    {% for orden in date.list %}
+                    <td>#{{orden.id}} - {{ orden.fecha_orden }} - {{ orden.id_proveedor }}</td>
+                    <td>{{orden.id_usuario.nombre}} {{orden.id_usuario.apellido}}</td>
+                    <td>{%if orden.id_recepcion %} {{orden.id_recepcion.id_usuario.nombre}} {{orden.id_recepcion.id_usuario.apellido}} con fecha: {{orden.id_recepcion.fecha_recepcion}}{% endif %}</td>
+                    <td>
+                        
+                        {%if not orden.id_recepcion %}
+                        <a class="btn btn-outline-primary" href="{% url 'confirmar_pedido' orden.id %}">Confirmar recepción de pedido</a>
+                        <a class="btn btn-outline-primary" href="{% url 'modificar_pedido' orden.id %}">Modificar Pedido</a>
+                        {% endif %}
+                        <a type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#exampleModal{{orden.id}}"
+                            >Eliminar</a>
+                    </td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+                </tbody>
+                </table>
+
+        {% for date in dates_items %}
+            {% for orden in date.list %}
+            <div class="modal fade" id="exampleModal{{orden.id}}" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalLabel{{orden.id}}" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel{{orden.id}}">Eliminar orden</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">Esta seguro que desea eliminar la orden n° "{{orden.id}}"</div>
+                        <div class="modal-footer">
+                            <a  class="btn btn-primary" data-dismiss="modal" aria-label="Close" href="{% url 'listar_pedidos' %}">Cerrar</a>
+                            <a class="btn btn-danger" href="{% url 'eliminar_pedido' orden.id %}">Eliminar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        {% endfor %}
+        
+
+        <!-- <h3>No hay ordenes de pedido vigentes</h3> -->
+
+    </div>
+<script src="{% static 'pedidos/js/listar_pedidos.js' %}"></script>
+{% endblock %}

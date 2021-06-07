@@ -1,0 +1,70 @@
+{% extends 'admin/base.html' %} 
+
+{% block title %}Productos{% endblock %}
+
+{% block content %}
+    {% if user %}
+    <div class="container pt-4">
+        <h1 class="display">Listado de Productos</h1>
+        <p class="lead">Registro de productos de ServiExpress</p>
+        <a class="btn btn-primary mb-3" href="{% url 'agregar_producto' %}">Agregar Producto</a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Descripcion</th>
+                    <th scope="col">Precio Compra</th>
+                   <!-- <th>Precio Venta</th>-->
+                   <!-- <th>Fecha Elaboracion: </th> -->
+                   <!-- <th>Fecha Vencimiento</th>-->
+                   <th scope="col">Stock</th>
+                   <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+        {% for producto in object_list %}
+            <tr>
+                <th>{{ producto.id }}</th>
+                <td>{{ producto.nombre }}</td>
+                <td>{{ producto.descripcion }}</td>
+                <td>{{ producto.precio_compra }}</td>
+                <!-- <td>{{ producto.precio_venta }}</td> -->
+                <!-- <td>{{ producto.fecha_elaboracion }}</td> -->
+                <!-- <td>{{ producto.fecha_vencimiento }}</td> -->
+                <td>{{ producto.stock }}</td>
+                <td><a class="btn btn-outline-primary" href="{% url 'modificar_producto' producto.id %}">Editar</a>
+                    <a type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#exampleModal{{producto.id}}"
+                        >Eliminar</a></td>
+                    </tr>
+                    {% endfor %}
+            </tbody>
+            </table>     
+          
+            {% for producto in object_list %}
+            <div class="modal fade" id="exampleModal{{producto.id}}" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalLabel{{producto.id}}" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel{{producto.id}}">Eliminar Producto</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">Esta seguro que desea eliminar el producto llamado
+                            "{{producto.nombre}}"</div>
+                        <div class="modal-footer">
+                            <a  class="btn btn-primary" data-dismiss="modal" aria-label="Close" href="{% url 'list_producto' %}">Cerrar</a>
+                            <a class="btn btn-danger" href="{% url 'eliminar_producto' producto.id %}">Eliminar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        
+        {% else %}
+        <h1>No hay registros de productos</h1>
+    </div>
+        {% endif %}
+{% endblock %}

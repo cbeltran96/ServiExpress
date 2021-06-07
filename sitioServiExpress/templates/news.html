@@ -1,0 +1,199 @@
+{% load static %}
+<!doctype html>
+<html>
+
+
+
+<head>
+	<title>Taller Mecanico ServiExpress</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="" />
+	<script
+		type="application/x-javascript"> addEventListener("load", function() {setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+	<!meta charset utf="8">
+		<link rel="stylesheet" href="{%  static 'css/flexslider.css' %}" type="text/css" media="screen" />
+		<link rel="stylesheet" href="{%  static 'fontawesome-5.5/css/all.min.css' %}" />
+		<!--bootstrap-->
+		<link href="{%  static 'css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
+		<link href="{%  static 'css/style.css' %}" rel="stylesheet" type="text/css" />
+
+
+</head>
+{% load static %}
+<body>
+		
+			<div class="header_nav" id="home">
+				<nav class="navbar navbar-default chn-gd">
+					
+					<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					</button>
+					
+					</div>
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav navbar-right">
+						<li class="col-md-2">
+							<a href="{% url 'index'%}" class="blue">
+								<span class="" aria-hidden="true"></span>
+								Inicio
+							</a>
+						</li>
+						<!---->
+						<li class="col-md-2">
+							<a href="{% url 'services'%}" class="pink">
+								<span class="" aria-hidden="true"></span>
+								Servicio
+							</a>
+						</li>
+						<!---->
+						<li class="col-md-2">
+							<a href="{% url 'about'%}" class="orang">
+								<span class="" aria-hidden="true"></span>
+								Acerca de
+							</a>
+						</li>
+						<!---->
+						<li class="col-md-2">
+							<a href="{% url 'news'%}"class="gray">
+								<span class="" aria-hidden="true"></span>
+								Nuevo
+							</a>
+						</li>
+						<!---->
+						<li class="col-md-2">
+							<a href="{% url 'contact'%}"class="sky">
+								<span class="" aria-hidden="true"></span>
+								Contacto
+							</a>
+						</li>
+						<!-- argegar iniciar -->
+						<li class="col-md-2">
+							<a href="" class="green">
+								<span class="" aria-hidden="true"></span>
+								Iniciar sesion
+							</a>
+						</li>
+	
+	
+	
+						<div class="clearfix">
+						<!--script-->
+						<script type="text/javascript">
+						jQuery(document).ready(function($) {
+						$(".scroll").click(function(event){		
+						event.preventDefault();
+						$('html,body').animate({scrollTop:$(this.hash).offset().top},900);
+						});
+						});
+						</script>
+						<!--script-->
+					</ul>
+					</div>
+					<div class="clearfix"></div>
+				</nav>
+			</div>
+			<div class="container">
+				<div class="logo">
+						<h1><a href="{% url 'index'%}">Taller Mecanico ServiExpress</a></h1>
+				</div>
+				<div class="ad-ph">
+					<p>Contacto : <span>+569</span>123456</p>
+				</div>
+					<div class="clearfix"></div>
+			</div>
+		<div class="banner-1">
+			<div class="container">
+				<h2>NUEVO</h2>
+			</div>	
+		</div>	
+		<!-- /banner -->
+		<!-- news -->
+		<div class="news">
+		<h3>TESTIMONIO DE CLIENTES </h3>
+			<div class="container">
+				<div class="col-md-6 news-left">
+					<div class="news-right">
+						<h4>05 ENERO, 2020</h4>
+						<h6><a href="#">NICOLAS</a></h6>
+						<p>El taller me atendio muy bien y la seguridad de mi auto estaba protegida por completo </p>
+					</div>
+				</div>
+				<div class="col-md-6 news-left">
+					<div class="news-right">
+						<h4>25 ENERO, 2021</h4>
+						<h6><a href="#">CAMILO</a></h6>
+						<p> Fui por un cambio de aceite y me atendieron super bien , nada que decir sigan asi !!!</p>
+					</div>
+				</div>
+				<div class="col-md-6 news-left">
+					<div class="news-right">
+						<h4>05 FEBRERO, 2021</h4>
+						<h6><a href="#">ERIKA</a></h6>
+						<p>Tube problemas con las pastillas de freno y ellos con mucha rapidez y eficiencia me hicieron el cambio un 7 !!!</p>
+					</div>
+				</div>
+				<div class="col-md-6 news-left">
+					<div class="news-right">
+						<h4>05 JUNIO, 2021</h4>
+						<h6><a href="#">MARIANO</a></h6>
+						<p> Fue una de las mejores experiencias junto a un taller , hice un cambio completo de neumaticos y me los dejaron super , muy confiables </p>
+					</div>
+				</div>
+				<div class="clearfix"></div>
+				<div class="news-bottom">
+				<h3>GRACIAS POR CONFIAR EN NOSOTROS </h3>
+					<div class="col-md-4 new-bt-lt">
+						<h6><a href="#">CONFIANZA</a></h6>
+						<p>Gracias por poner nuestra confianza en ustedes , asi poder ir creciendo cada dia mas </p>
+					</div>
+					<div class="col-md-4 new-bt-lt">
+						<h6><a href="#">DESEMPEÑO</a></h6>
+						<p> Nuestro desempeño es gracias a ustdes por poner su confianza en nuestras manos  </p>
+					</div>
+					<div class="col-md-4 new-bt-lt">
+						<h6><a href="#">AMABILIDAD</a></h6>
+						<p> Nuestra amabilidad se refelja en cada trabajador de esta empresa para desempeñar un trabajo impecable  </p>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+			</div>
+		</div>
+		<!-- news de -->
+		<!-- footer -->
+		<div class="footer">
+			<div class="container">
+				<div class="col-md-3 footer-left">
+					<h3>TELEFONO</h3>
+					<p>+569123456789</p>
+				</div>
+				<div class="col-md-3 footer-left">
+					<h3>E-Mail CL</h3>
+					<p>Email : serviexprerss@gmail.com<a href=""></a></p>
+				</div>
+				<div class="col-md-3 footer-left">
+					<h3>REDES SOCIALES</h3>
+					<ul>
+						<li><a href="#"><i class="facebok"> </i></a></li>
+						<li><a href="#"><i class="twiter"> </i></a></li>
+						<li><a href="#"><i class="goog"> </i></a></li>
+						<li><a href="#"><i class="inst"> </i></a></li>
+						<div class="clearfix"></div>
+					</ul>
+				</div>
+				<div class="col-md-3 footer-left">
+					<h3>DIRECCION</h3>
+					<p>#223 ESTACION CENTRAL .</p>
+				</div>
+				<div class="clearfix"></div>
+				<div class="foot-bottom">
+					<p>Copyrights © 2021 TALLER SERVIEXPRESS <a href=""></a></p>
+				</div>
+			</div>
+		</div>
+    </body>
+</html>

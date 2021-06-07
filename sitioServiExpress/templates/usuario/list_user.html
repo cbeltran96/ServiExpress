@@ -1,0 +1,78 @@
+{% extends 'admin/base.html' %} 
+
+{% block title %}Usuarios{% endblock %}
+
+{% block content %}
+    {% if user %}
+        <div class="container pt-4">
+            <h1 class="display">Listado de Usuarios</h1>
+            <p class="lead">Registro de clientes de ServiExpress</p>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Usuario</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Rol Usuario</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if user.rol_id == 1 %}
+                        {% for usuario in object_list %}
+                        <tr>
+                            <th scope="row">{{ usuario.id }}</th>
+                            <td>{{ usuario.username }}</td>
+                            <td>{{ usuario.email }}</td>
+                            <td>{{ usuario.rol }}</td>
+                            <td>
+                                <a class="btn btn-outline-primary" href="{% url 'editar_usuario' usuario.id %}">Editar</a>
+                                {% if user.rol_id == 1 %}
+                                    <a type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#exampleModal{{usuario.id}}">Eliminar</a>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    {% else %}
+                    <tr>
+                        <th scope="row">{{ user.id }}</th>
+                        <td>{{ user.username }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.rol }}</td>
+                        <td>
+                            <a class="btn btn-outline-primary" href="{% url 'editar_usuario' user.id %}">Editar</a>
+                            {% if user.rol_id == 1 %}
+                                <a type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#exampleModal{{user.id}}">Eliminar</a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- Modal -->
+        {% for usuario in object_list %}
+        <div class="modal fade" id="exampleModal{{usuario.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel{{usuario.id}}" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel{{usuario.id}}">Eliminar cliete</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">Esta seguro que desea eliminar el cliente #{{usuario.id}} {{ usuario.username }}</div>
+                    <div class="modal-footer">
+                        <a class="btn btn-primary" data-dismiss="modal" aria-label="Close">Cerrar</a>
+                        <a class="btn btn-danger" href="{% url 'eliminar_usuario' usuario.id %}">Eliminar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+            
+    {% else %}
+        <h1>No hay registros de usuarios</h1>
+    {% endif %}
+{% endblock %}
