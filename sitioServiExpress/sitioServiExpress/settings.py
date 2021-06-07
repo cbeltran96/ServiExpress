@@ -32,19 +32,19 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+	'apps.mainpage',
     'apps.usuario',
-    'apps.mainpage',
-    'apps.Productos',
-    'apps.Proveedores',
     'apps.cliente',
 	'apps.reserva',
-    'apps.pedidos',
-    'django.contrib.admin',
+	'apps.pedidos',
+	'apps.Productos',
+    'apps.Proveedores',
 ]
 
 MIDDLEWARE = [
@@ -151,9 +151,9 @@ LOGOUT_REDIRECT_URL = 'home'
 
 # Reset Password
 EMAIL_USE_TLS = True
-EMAIL_HOST = 'mail.erikaavalos.cl'
+EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'django@erikaavalos.cl'
-EMAIL_HOST_PASSWORD = '[t4^Tw=YmYZ.'
+EMAIL_HOST_USER = 'trabajos.django@gmail.com'
+EMAIL_HOST_PASSWORD = 'cjvxaxdtaekuktjo'
 DEFAULT_FROM_EMAIL = 'ServiExpress <noreply@ServiExpress.cl>'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
