@@ -18,7 +18,7 @@ class Recepcion(models.Model):
 class DetalleProducto(models.Model):
     id_orden = models.ForeignKey("pedidos.OrdenPedido", on_delete=models.CASCADE, null=True)
     id_producto = models.ForeignKey("Productos.Producto", verbose_name="Producto", on_delete=models.CASCADE, null=True)
-    cantidad = models.IntegerField()
+    cantidad = models.IntegerField(default=1)
     def __str__(self):
         return '%s' % (self.id_producto)
 

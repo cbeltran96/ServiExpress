@@ -24,88 +24,92 @@
 <body>
 		
 			<div class="header_nav" id="home">
-				<nav class="navbar navbar-default chn-gd">
-					
-					<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+		<nav class="navbar navbar-default chn-gd">
+
+			<!-- se marcan y alternan para mejor visualizacion -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+					data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
 					<span class="sr-only">Toggle navigation</span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
-					</button>
-					
-					</div>
-					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-					<ul class="nav navbar-nav navbar-right">
-						<li class="col-md-2">
-							<a href="{% url 'index'%}" class="blue">
-								<span class="" aria-hidden="true"></span>
-								Inicio
-							</a>
-						</li>
-						<!---->
-						<li class="col-md-2">
-							<a href="{% url 'services'%}" class="pink">
-								<span class="" aria-hidden="true"></span>
-								Servicio
-							</a>
-						</li>
-						<!---->
-						<li class="col-md-2">
-							<a href="{% url 'about'%}" class="orang">
-								<span class="" aria-hidden="true"></span>
-								Acerca de
-							</a>
-						</li>
-						<!---->
-						<li class="col-md-2">
-							<a href="{% url 'news'%}"class="gray">
-								<span class="" aria-hidden="true"></span>
-								Nuevo
-							</a>
-						</li>
-						<!---->
-						<li class="col-md-2">
-							<a href="{% url 'contact'%}"class="sky">
-								<span class="" aria-hidden="true"></span>
-								Contacto
-							</a>
-						</li>
-						<!-- argegar iniciar -->
-						<li class="col-md-2">
-							<a href="" class="green">
-								<span class="" aria-hidden="true"></span>
-								Iniciar sesion
-							</a>
-						</li>
-	
-	
-	
-						<div class="clearfix">
+				</button>
+
+			</div>
+			<!-- se recopilan los formularios de navegacion (inicio, servicio, acerca de , contacto , nuevo "agregar inicio y registro ") -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav navbar-right">
+					<li class="col-md-2">
+						<a href="{% url 'home'%}" class="blue">
+							<span class="" aria-hidden="true"></span>
+							Inicio
+						</a>
+					</li>
+					<!---->
+					<li class="col-md-2">
+						<a href="{% url 'services'%}" class="pink">
+							<span class="" aria-hidden="true"></span>
+							Servicio
+						</a>
+					</li>
+					<!---->
+					<li class="col-md-2">
+						<a href="{% url 'about'%}" class="orang">
+							<span class="" aria-hidden="true"></span>
+							Acerca de
+						</a>
+					</li>
+					<!---->
+					<li class="col-md-2">
+						<a href="{% url 'news'%}" class="gray">
+							<span class="" aria-hidden="true"></span>
+							Nuevo
+						</a>
+					</li>
+					<!---->
+					<li class="col-md-2">
+						<a href="{% url 'contact'%}" class="sky">
+							<span class="" aria-hidden="true"></span>
+							Contacto
+						</a>
+					</li>
+					<!-- argegar iniciar -->
+					<li class="col-md-2">
+						<a href="{% url 'login' %}" class="green">
+							<span class="" aria-hidden="true"></span>
+							Iniciar sesion
+						</a>
+					</li>
+
+
+
+					<div class="clearfix">
 						<!--script-->
 						<script type="text/javascript">
-						jQuery(document).ready(function($) {
-						$(".scroll").click(function(event){		
-						event.preventDefault();
-						$('html,body').animate({scrollTop:$(this.hash).offset().top},900);
-						});
-						});
+							jQuery(document).ready(function ($) {
+								$(".scroll").click(function (event) {
+									event.preventDefault();
+									$('html,body').animate({ scrollTop: $(this.hash).offset().top }, 900);
+								});
+							});
 						</script>
 						<!--script-->
-					</ul>
-					</div>
-					<div class="clearfix"></div>
-				</nav>
+				</ul>
 			</div>
-			<div class="container">
-				<div class="logo">
-						<h1><a href="{% url 'index'%}">Taller Mecanico ServiExpress</a></h1>
-				</div>
-				<div class="ad-ph">
-					<p>Contacto : <span>+569</span>123456</p>
-				</div>
-					<div class="clearfix"></div>
-			</div>
+			<div class="clearfix"></div>
+		</nav>
+	</div>
+	<div class="container">
+		<div class="logo">
+			<h1><a href="{% url 'home'%}">Taller Mecanico ServiExpress</a></h1>
+		</div>
+		<div class="ad-ph">
+			<p>CONTACTO : <span>+569</span>123456789</p>
+		</div>
+		<div class="clearfix"></div>
+
+	</div>
 		<div class="banner-1">
 			<div class="container">
 				<h2>NUEVO</h2>

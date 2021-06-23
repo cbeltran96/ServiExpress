@@ -13,21 +13,23 @@
             <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Orden de pedido</th>
+                    <th scope="col">Proveedor</th>
+                    <th scope="col">Fecha</th>
                     <th scope="col">Creada por</th>
-                    <th scope="col">Entrega recepcionada por</th>
+
+                    <th scope="col">Recepcion de orden</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
-                {% regroup pedidos by fecha_orden as dates_items %}
-                {% for date in dates_items %}
+            {% for orden in pedidos %}
                 <tr>
-                    <th scope="row">{{ date.grouper|date:"l d"  }} de {{ date.grouper|date:"F"  }}</th>
-                    {% for orden in date.list %}
-                    <td>#{{orden.id}} - {{ orden.fecha_orden }} - {{ orden.id_proveedor }}</td>
+                    <th scope="row">{{orden.id}}</th>
+                    
+                    <td>{{ orden.id_proveedor }}</td>
+                    <td>{{ orden.fecha_orden }}</td>
                     <td>{{orden.id_usuario.nombre}} {{orden.id_usuario.apellido}}</td>
-                    <td>{%if orden.id_recepcion %} {{orden.id_recepcion.id_usuario.nombre}} {{orden.id_recepcion.id_usuario.apellido}} con fecha: {{orden.id_recepcion.fecha_recepcion}}{% endif %}</td>
+                    <td>{%if orden.id_recepcion %}  {{orden.id_recepcion.fecha_recepcion|date:'d-m-Y'}} por {{orden.id_recepcion.id_usuario.nombre}} {{orden.id_recepcion.id_usuario.apellido}}{%else%} No {% endif %}</td>
                     <td>
                         
                         {%if not orden.id_recepcion %}
@@ -37,7 +39,6 @@
                         <a type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#exampleModal{{orden.id}}"
                             >Eliminar</a>
                     </td>
-                    {% endfor %}
                 </tr>
                 {% endfor %}
                 </tbody>
