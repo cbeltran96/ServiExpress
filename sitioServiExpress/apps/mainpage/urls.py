@@ -7,7 +7,7 @@ from . import views
 urlpatterns = [
     # localhost:8000/mainpage
     # localhost:8000/index
-    path('index', views.index, name="index"),
+    path('index', views.index, name="user_portal"),
     # localhost:8000/services
     path('services', views.services, name="services"),
     # localhost:8000/news

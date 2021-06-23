@@ -1,4 +1,4 @@
-{% extends 'usuario/base/base.html' %} 
+{% extends 'base.html' %} 
 {% load staticfiles %}
 
 {% block title %}
@@ -13,8 +13,8 @@ Registro
 
 {% block content %}
 <div id="registro" class="container pt-4">
-    <h1 class="display-4">Login</h1>
-    <p class="lead">Login de usuarios de ServiExpress</p>
+    <h1 class="display-4">Iniciar Sesión</h1>
+    <p class="lead">Inicio de sesión de usuarios de ServiExpress</p>
     <form method="POST" id="formulario">
         {% csrf_token %}
 
@@ -39,13 +39,15 @@ Registro
         {{form.non_field_errors}}
 
         <p class="text-right" ><a class="btn btn-link" href="{% url 'password_reset' %}">Olvidé mi contraseña</a></p>
-
+        <p class="text-right" ><a class="btn btn-link" href="{% url 'revisar_pedido' %}">¿Eres proveedor? Ingresa Aquí para visualizar un pedido</a></p>
         <div class="form-group d-flex justify-content-end">
-            <input class="btn btn-primary" type="submit" value="Enviar"/>
+            <input class="btn btn-primary" type="submit" value="Entrar"/>
         </div>
         <ul class="nav navbar justify-content-end pr-0">
             <li><a class="btn btn-secondary" href="{% url 'home' %}">Volver al Home</a></li>
             <li><a class="btn btn-secondary ml-2" href="{% url 'registrar_usuario' %}">Registrarse</a></li>
+            
+
         </ul>
         
     </form>

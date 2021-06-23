@@ -21,16 +21,16 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav">
+      <ul class="nav navbar-nav ml-auto">
           <li class="nav-item dropdown">
              {% if user.is_authenticated %}
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Usuario {{user.nombre}} {{user.apellido}}
+                  {{user.nombre}} {{user.apellido}}
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+                  <a class="dropdown-item" href="{% url 'logout' %}">Cerrar Sesión</a>
                   {% else %}
-                  <a class="dropdown-item" href="{% url 'login' %}">Login</a>
+                  <a class="dropdown-item" href="{% url 'login' %}">Iniciar Sesión</a>
                     {% endif %}
               </div>
           </li>
@@ -42,9 +42,10 @@
         <div class="col-2">
             <ul class="nav flex-column navbar-dark bg-dark">
                 
-                <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="{% url 'listar_usuario' %}">Usuarios</a></li>
+                <li class="nav-item"><a class="nav-link active" href="{% url 'user_portal' %}">Inicio</a></li>
+                
                 {% if user.rol_id == 2 or user.rol_id == 1 %}
+                <li class="nav-item"><a class="nav-link" href="{% url 'listar_usuario' %}">Usuarios</a></li>
                 <li class="nav-item"><a class="nav-link" href="{% url 'listar_clientes' %}">Clientes</a></li>
                 <!-- <li class="nav-item"><a class="nav-link" href="#">Empleados</a></li> -->
                 <li class="nav-item"><a class="nav-link" href="{% url 'list_producto' %}">Productos</a></li>

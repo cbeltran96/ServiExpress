@@ -69,3 +69,18 @@ def confirmar_pedido(request, orden_id):
             orden.save()
         return redirect('listar_pedidos')
     return render(request,'pedidos/recepcion_pedido.html', {'orden': orden})
+
+def checkPedido(request):
+    
+    if request.method == 'POST':
+        orden_id = request.POST.get("orden_id")
+        rutProveedor = request.POST.get("rutProveedor")
+        try:
+            orden = OrdenPedido.objects.get(id=orden_id, id_proveedor__rut_empresa = rutProveedor)
+            detalles_productos = DetalleProducto.objects.filter(id_orden = orden)
+        except:
+            orden = None
+            detalles_productos = None
+        return render(request, "pedidos/revisar_pedido.html", {'orden' : orden, 'detalles_productos' : detalles_productos})
+    else:
+        return render(request, "pedidos/checkPedido.html")

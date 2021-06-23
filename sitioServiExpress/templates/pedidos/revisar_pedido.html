@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Pedidos{% endblock %}
+{% block extrastatic %}<link rel="stylesheet" href="{% static 'pedidos/css/listar_pedidos.css' %}"/>{% endblock %}
+{% block content %}
+<div class="jumbotron">
+{%if orden%}
+
+<h1 class="display"> Bienvenido {{orden.id_proveedor}}</h1>
+<h3>Orden de pedido N° {{ orden.id }}</h2>
+
+    <div class="object_container">
+                <div>
+                    <p>Fecha:{{ orden.fecha_orden }}</p>
+                    <p>Pedido por: {{orden.id_usuario.nombre}} {{orden.id_usuario.apellido}}</p>
+                    <h3>Productos:</h3>
+                    {%for product in detalles_productos%}
+                    
+                    
+                    <li>{{product.id_producto}} ({{product.cantidad}})</li>
+                    {%endfor%}
+                </div>
+    </div>
+
+    {% else%}
+    <h3>No se han encontrado ordenes para el RUT indicado</h3>
+    {% endif%}
+<div>
+    <a type="submit" href="{% url 'revisar_pedido' %}" class="btn btn-primary">Volver atrás</a>
+<script src="{% static 'pedidos/js/listar_pedidos.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Pedidos{% endblock %}
+{% block extrastatic %}{% endblock %}
+{% block content %}
+     <div class ="jumbotron">
+            <h1>Consultar</h1>
+            <p>En este formulario puedes ver tu orden de pedido ingresando el número de la orden enviada a su correo y el RUT de la empresa</p>
+            <form id="formulario" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <!-- {{ form.as_p }} -->
+
+                <div class="form-group">
+                    <label for="id_orden">Número de orden</label><br>
+                    <input class="form-control" type="number" name="orden_id" id="id_orden_id" required/>
+                    <label for="rutProveedor">RUT de la empresa</label><br>
+                    <input class="form-control" type="text" name="rutProveedor"/>
+                    
+                </div>
+
+
+                <input type="submit" value="Continuar" class="btn btn-success">
+
+            </form>
+        </div>
+        
+{% endblock %}

@@ -18,6 +18,6 @@ urlpatterns = [
 
     path('confirmar/<int:orden_id>', views.confirmar_pedido, name="confirmar_pedido"),
 
-
+    path('checkPedido/', views.checkPedido, name="revisar_pedido")
 
 ]
