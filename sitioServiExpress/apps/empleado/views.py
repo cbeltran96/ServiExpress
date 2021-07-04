@@ -4,7 +4,7 @@ from ..usuario.models import Usuario
 
 # Create your views here.
 def listar_empleado(request):
-    empleados = Usuario.objects.all().filter(rol_id=2)
+    empleados = Usuario.objects.all().filter(rol_id=2).order_by('id')
     return render(request, "empleado/listar_empleados.html", {'empleados' : empleados})
 
 def agregar_empleado(request):
@@ -14,7 +14,7 @@ def agregar_empleado(request):
             model_instance = form.save(commit=False)
             model_instance.rol_id = 2
             model_instance.save()
-            return redirect("listar_empleados")
+            return redirect('/listar_empleado')
     else:
         form = EmpleadoForm()
         return render(request, "empleado/agregar_empleado.html", {'form': form})

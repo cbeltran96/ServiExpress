@@ -5,7 +5,7 @@ from ..usuario.models import Usuario
 
 # Create your views here.
 def listar_cliente(request):
-    clientes = Usuario.objects.all().filter(rol_id=3)
+    clientes = Usuario.objects.all().filter(rol_id=3).order_by('id')
     return render(request, "cliente/listar_clientes.html", {'clientes' : clientes})
 
 def agregar_cliente(request):
@@ -15,7 +15,7 @@ def agregar_cliente(request):
             model_instance = form.save(commit=False)
             model_instance.rol_id = 3
             model_instance.save()
-            return redirect("/listar_clientes")
+            return redirect("/listar_cliente")
     else:
         form = ClienteForm()
         return render(request, "cliente/agregar_cliente.html", {'form': form})

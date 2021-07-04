@@ -11,6 +11,7 @@ class UsuarioManager(BaseUserManager):
         usuario = self.model(username = username, email = self.normalize_email(email), nombre = nombre, apellido = apellido)
 
         usuario.set_password(password)
+        usuario.rol_id = 3
         usuario.save()
         return usuario
     
@@ -37,7 +38,7 @@ class Usuario(AbstractBaseUser):
     fecha_nacimiento = models.DateField('Fecha de nacimiento', auto_now=False, auto_now_add=False, blank= True, null= True)
     is_active = models.BooleanField(default = True)
     usuario_administrador = models.BooleanField(default = False)
-    rol = models.ForeignKey(Rol, on_delete=models.CASCADE)
+    rol = models.ForeignKey(Rol, on_delete=models.CASCADE, null= False)
     objects = UsuarioManager()
 
 

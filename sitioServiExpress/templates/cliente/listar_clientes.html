@@ -30,10 +30,12 @@
                     {% endif %}
                 </td>
             </tr>
+            {% endfor %}
         </tbody>
     </table>
 </div>
 
+{% for clientes in clientes %}
 <!-- Modal -->
 <div class="modal fade" id="exampleModal{{clientes.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel{{clientes.id}}" aria-hidden="true">
     <div class="modal-dialog" role="document">
