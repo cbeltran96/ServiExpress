@@ -13,6 +13,7 @@ def agregar_cliente(request):
         form = ClienteForm(request.POST)
         if form.is_valid():
             model_instance = form.save(commit=False)
+            model_instance.rol_id = 3
             model_instance.save()
             return redirect("/listar_clientes")
     else:
