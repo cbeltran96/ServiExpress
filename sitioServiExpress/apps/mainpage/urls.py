@@ -16,4 +16,10 @@ urlpatterns = [
     path('contact', views.contact, name="contact"),
     # localhost:8000/about
     path('about', views.about, name="about"),
+    #localhost:8000/estadisticas
+    path('estadisticas', views.estadisticas, name="estadisticas"),   
+    
+    path(r'^report/(?P<monthFilter>[a-z]+)/$', views.GeneratePDF.as_view(), name="create_report"),
+    
+
 ]

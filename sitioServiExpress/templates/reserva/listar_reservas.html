@@ -8,30 +8,43 @@
 <h1 class="display">Listado de Reservas</h1>
 <p class="lead">Registro de Reservas de ServiExpress</p>
 <a class="btn btn-primary mb-3" href="{% url 'agregar_reserva' %}">Agregar Reserva</a>
+ <a class="btn btn-primary mb-3" href="{% url 'listar_detalleServicio' %}">Lista de detalles de servicio</a>
     {% if reservas %}
         <div class="object_container">
             <table class="table">
                 <thead>
                     <tr>
+                        <th scope="col">#</th>
                         <th scope="col">Fecha Reserva</th>
                         <th scope="col">Hora Reserva</th>
                         <th scope="col">Usuario Reserva</th>
+                        <th scope="col">Servicio</th>
                         <th scope="col">Detalle Reserva</th>
                         <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
+                
+                
                     {% for reserva in reservas %}
+                    {% if not reserva.id_detalle_servicio %}
+                    
                     <tr>
+                        <td>{{ reserva.id }}</td>
                         <th scope="row">{{reserva.fecha_reserva}}</th>
                         <td>{{ reserva.hora_reserva }}</td>
                         <td>{{ reserva.id_usuario }}</td>
+                        <td>{{ reserva.id_servicio }}</td>
                         <td>{{ reserva.detalle_reserva }}</td>
                         <td>
+                            <a type="button" class="btn btn-outline-primary" href="{% url 'agregar_detalleServicio' reserva.id %}">Atender Servicio</a>
                             <a class="btn btn-outline-primary" href="{% url 'cambiar_reserva' reserva.id %}">Cambiar Hora</a>
                             <a type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#exampleModal{{reserva.id}}">Eliminar</a>
+                            
                         </td>
                     </tr>
+                    
+                    {% endif %}
                     {% endfor %}
                 </tbody>
             </table>

@@ -4,21 +4,24 @@
 {% block title %}Pedidos{% endblock %}
 {% block extrastatic %}{% endblock %}
 {% block content %}
-     <div >
+     <div>
         <div class="col-md-5">
             <h1>Orden de pedido #{{orden.id}}</h1>
             <p>Proveedor: {{orden.id_proveedor}}<p>
             <p>Solicitado por {{orden.id_usuario|default:"Invitado"}}<p>
             <p>Fecha: {{orden.fecha_orden}}
             <form method="POST">
-                {{ formset.as_table }}{{ formset.cantidad.errors }}
+                <div class="productos">
+                {{ formset.as_p }}
+                
+                {{ formset.cantidad.errors }}
+                </div>
                 {% csrf_token %}
                 <button type="submit" class="btn btn-primary">Agregar</button> 
                 <button type="button" onclick="location.href='{% url 'listar_pedidos' %}';"; style="cursor: pointer;"class="btn btn-primary">Terminar</button>
-                </form>
                 
-
             </form>
+            <div>
         </div>
         
 {% endblock %}

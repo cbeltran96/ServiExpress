@@ -28,9 +28,14 @@ urlpatterns = [
     path('pedidos/', include('apps.pedidos.urls')),
     path('proveedor/', include('apps.Proveedores.urls')),
     path('productos/', include('apps.Productos.urls')),
+    path('servicios/', include('apps.Servicios.urls')),
+    path('DetalleServicios/', include('apps.detalleServicio.urls')),
+    path('pagos/',include('apps.Boleta.urls')),
+    path('', include('apps.empleado.urls')),
     path('admin/', admin.site.urls),
 
-   # Login and Logout
+
+# Login and Logout
     path('login/', LoginView.as_view(redirect_authenticated_user=True,template_name='usuario/login.html'), name='login'),
     path('logout/', LogoutView.as_view(template_name='usuario/logout.html'), name='logout'),
     path('', TemplateView.as_view(template_name='home.html'), name='home'),

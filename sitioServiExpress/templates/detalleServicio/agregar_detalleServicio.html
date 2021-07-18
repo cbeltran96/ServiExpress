@@ -1,0 +1,33 @@
+{% extends 'admin/base.html' %}
+
+
+{% block content %}
+
+<br><br>
+<div class="row">
+    <div class="col-12 col-md-6 offset-md-3">
+        <div class="card">
+            <div class="card-body">
+                <h2>Detalle Servicio</h2>
+                <hr>
+                <p>Cliente: {{reserva.id_usuario}}</p>
+                <p>Servicio: {{reserva.id_servicio}}</p>
+                <p>Fecha de reserva: {{reserva.fecha_reserva}}</p>
+                <p>Hora de reserva: {{reserva.hora_reserva}}</p>
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    {{form}}
+                    <div class="d-flex justify-content-center">
+                        <hr>
+                        <input type="submit" value="Agregar Detalle servicio" class="">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+{% endblock %}

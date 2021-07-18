@@ -47,11 +47,17 @@
                 {% if user.rol_id == 2 or user.rol_id == 1 %}
                 <li class="nav-item"><a class="nav-link" href="{% url 'listar_usuario' %}">Usuarios</a></li>
                 <li class="nav-item"><a class="nav-link" href="{% url 'listar_clientes' %}">Clientes</a></li>
-                <!-- <li class="nav-item"><a class="nav-link" href="#">Empleados</a></li> -->
+                <li class="nav-item"><a class="nav-link" href="{% url 'listar_empleados' %}">Empleados</a></li>
                 <li class="nav-item"><a class="nav-link" href="{% url 'list_producto' %}">Productos</a></li>
                 <li class="nav-item"><a class="nav-link" href="{% url 'list_proveedor' %}">Proveedores</a></li>
                 <li class="nav-item"><a class="nav-link" href="{% url 'listar_pedidos' %}">Pedidos</a></li>
                 <li class="nav-item"><a class="nav-link" href="{% url 'listar_reservas' %}">Reservas</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'listar_servicio' %}">Servicios</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'list_boleta' %}">Boletas</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'list_formaPago' %}">Forma De Pago</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'estadisticas' %}">Estadisticas</a></li>
+
+                
                 {% endif %}
                 {% if user.rol_id == 3 %}
                 <li class="nav-item"><a class="nav-link" href="{% url 'agregar_reserva' %}">Ralizar Reserva</a></li>

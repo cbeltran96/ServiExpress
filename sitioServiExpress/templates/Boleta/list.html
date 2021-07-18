@@ -1,0 +1,64 @@
+{% extends 'admin/base.html' %} 
+
+{% block title %}Boletas{% endblock %}
+
+{% block content %}
+    {% if user %}
+    <div class="container pt-4">
+        <h1 class="display">Listado de Formas De Pago</h1>
+        <p class="lead">Registro de formas de pago ServiExpress</p>
+        <a class="btn btn-primary mb-3" href="{% url 'agregar_formaPago' %}">Agregar Forma De Pago</a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Metodo De Pago</th>
+                    <th scope="col">Detalle</th>
+                   <!-- <th>Email: </th>-->
+                   <!-- <th>Telefono: </th> -->
+                   <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for metodopago in object_list %}
+                <tr>
+                    <th>{{ metodopago.id }}</th>
+                    <td>{{ metodopago.metodo_pago }}</td>
+                    <td>{{ metodopago.descripcion }}</td>
+                    <td><a class="btn btn-outline-primary" href="{% url 'modificar_formaPago' metodopago.id %}">Editar</a>
+                        <a type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#exampleModal{{metodopago.id}}"
+                            >Eliminar</a></td>
+                    <!-- <td>{{ proveedor.email }}</td>
+                    <td>{{ proveedor.telefono }}</td> -->
+                </tr>
+                {% endfor %}
+            </tbody>
+            </table>
+            {% for metodopago in object_list %}
+            <div class="modal fade" id="exampleModal{{metodopago.id}}" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalLabel{{metodopago.id}}" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel{{metodopago.id}}">Eliminar Proveedor</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">Esta seguro que desea eliminar el proveedor llamado
+                            {{metodopago.metodo_pago}}</div>
+                        <div class="modal-footer">
+                            <a class="btn btn-primary" data-dismiss="modal" aria-label="Close" href="{% url 'list_formaPago' %}">Cerrar</a>
+                            <a class="btn btn-danger" href="{% url 'eliminar_formaPago' metodopago.id %}">Eliminar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+    {% else %}
+    <h1>No hay registros de metodos de pago</h1>
+    </div>
+    
+{% endif %}
+
+{% endblock %}

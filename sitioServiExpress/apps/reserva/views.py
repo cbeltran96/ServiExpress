@@ -22,12 +22,12 @@ def agregar_reserva(request):
     days= []
     base = date.today()
     for x in range(1, 8):
-      days.append(base + timedelta(days=x))
+        days.append(base + timedelta(days=x))
     #enviar horarios disponibles
     hours = []
     hours = [
         '09:00', '09:30', '10:00', '10:30', '11:00', '11:30', '12:00', '12:30', '13:00', '13:30', '14:00', '14:30', '15:00',
-         '15:30', '16:00', '16:30', '17:00', '18:00', '18:30', '19:00', '19:30'
+        '15:30', '16:00', '16:30', '17:00', '18:00', '18:30', '19:00', '19:30'
         ]
     dateinput = request.GET.get("date")
     hourinput = request.POST.get("hora_reserva")

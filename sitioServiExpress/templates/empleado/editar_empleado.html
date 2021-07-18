@@ -1,0 +1,18 @@
+{% extends 'admin/base.html' %}
+{% load staticfiles %}
+
+{% block title %}Editar Empleado{% endblock %}
+
+{% block content %}
+<div id="registro" class="container pt-4">
+    <h1 class="display">Editar Empleado</h1>
+    <p class="lead">Registro de empleados de ServiExpress</p>
+    <form method="POST">
+        {% csrf_token %} {{ form.as_p }}
+        <div class="form-group nav justify-content-end">
+            <a class="btn btn-secondary mr-1" onclick="window.history.go(-1); return false;">Volver</a>
+            <button class="btn btn-primary" type="submit">Guardar</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

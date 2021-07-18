@@ -1,0 +1,71 @@
+{% extends 'admin/base.html' %} 
+
+{% block title %}Boletas{% endblock %}
+
+{% block content %}
+    {% if user %}
+    <div class="container pt-4">
+        <h1 class="display">Listado de Boletas</h1>
+        <p class="lead">Listado De Boletas Serviexpress</p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Fecha Boleta</th>
+                    <th scope="col">Detalle</th>
+                    <th scope="col">Total Del Pedido</th>
+                    <th scope="col">Boleta O Factura</th>
+                    <th scope="col">Forma De Pago</th>
+                    <th scope="col">Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for boletas in object_list %}
+                <tr>
+                    <th>{{ boletas.id }}</th>
+                    <th>{{ boletas.fecha_documento }}</th>
+                    <td>{{ boletas.detalle }}</td>
+                    <td>{{ boletas.total_pedido }}</td>
+                    <td>{{ boletas.boleta_o_factura }}</td>
+                    <td>{{ boletas.formaPago_idpago }}</td>
+                    {% if boletas.activa %}
+                        <td>Activa</td>
+                        <td><a type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#exampleModal{{boletas.id}}">Anular</a></td>
+                    {% else %}
+                        <td>Anulada</td>
+                        <td><button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#exampleModal{{boletas.id}}" disabled >Anular</button></td>
+                    {% endif %}
+                    
+                    
+                </tr>
+                {% endfor %}
+            </tbody>
+            </table>
+            {% for boletas in object_list %}
+            <div class="modal fade" id="exampleModal{{boletas.id}}" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalLabel{{boletas.id}}" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel{{boletas.id}}">Anular Boleta</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">Esta seguro que desea anular la boleta 
+                            {{boletas.id}}</div>
+                        <div class="modal-footer">
+                            <a class="btn btn-primary" data-dismiss="modal" aria-label="Close" href="{% url 'list_boleta' %}">Cerrar</a>
+                            <a class="btn btn-danger" href="{% url 'anular_boleta' boletas.id %}">Eliminar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+    {% else %}
+    <h1>No hay registros de boletas</h1>
+    </div>
+    
+{% endif %}
+
+{% endblock %}

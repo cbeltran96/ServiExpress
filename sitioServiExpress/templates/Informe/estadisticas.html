@@ -1,0 +1,76 @@
+{% extends 'admin/base.html' %}
+{% load staticfiles %}
+
+{% block title %}Forma De Pago{% endblock %}
+{% block content %}
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.1.2/dist/echarts.min.js"></script>
+    
+    <div class="container">
+    <h1> Informe de Ventas del Mes</h1>
+    <form method="POST">
+        <select name="month" class="form-control">
+            {% for option in options %}
+                <option value="{{option | date:'n'}}">{{option| date:'F o'}}</option>
+            {% endfor %}
+        </select>
+
+        {% csrf_token %}
+        <button type=submit class="btn btn-primary" >Exportar informe</button>
+    </form>
+    <hr/>
+    <h1> Informe Anual</h1>
+    <div id="main" style="width: 1200px;height:600px; "></div>
+    
+    <script type="text/javascript">
+        // based on prepared DOM, initialize echarts instance
+        var myChart = echarts.init(document.getElementById('main'));
+
+        // specify chart configuration item and data
+        var option = {
+            tooltip: {
+                trigger: 'axis'
+            },
+            legend: {
+                data: ['Aprobadas', 'Anuladas']
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            toolbox: {
+                feature: {
+                    saveAsImage: {}
+                }
+            },
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre']
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: [
+                {
+                    name: 'Aprobadas',
+                    type: 'line',
+                    stack: '',
+                    data: '{{activo}}'.split(',')
+                },
+                {
+                    name: 'Anuladas',
+                    type: 'line',
+                    stack: '',
+                    data: '{{anulado}}'.split(',')
+                }
+            ]
+        };
+        // use configuration item and data specified to show chart
+        myChart.setOption(option);
+    </script>
+    
+</div>
+
+{% endblock %} 

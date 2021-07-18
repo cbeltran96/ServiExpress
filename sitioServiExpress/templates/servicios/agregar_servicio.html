@@ -1,0 +1,31 @@
+{% extends 'admin/base.html' %}
+
+
+{% block content %}
+
+<br><br>
+<div class="row">
+    <div class="col-12 col-md-6 offset-md-3">
+        <div class="card">
+            <div class="card-body">
+                <h2>Registrar Servicios</h2>
+                <hr>
+                
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    {{form}}
+                    <div class="d-flex justify-content-center">
+                        <hr>
+                        <input type="submit" value="Registrar servicio" class="">
+                    </div>
+                </form>
+                {{mensaje}}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+{% endblock %}

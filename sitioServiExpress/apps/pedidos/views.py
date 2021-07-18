@@ -11,7 +11,19 @@ from django.forms import modelformset_factory,inlineformset_factory
 
 def pedido(request, orden_id):
     orden = OrdenPedido.objects.get(pk=orden_id)
-    DetalleProductoFormset = inlineformset_factory(OrdenPedido, DetalleProducto, fields=('id_producto','cantidad'),extra=1)
+    DetalleProductoFormset = inlineformset_factory(
+        OrdenPedido,
+        DetalleProducto,
+        fields=('id_producto','cantidad'),
+        extra=1,
+        labels = {
+            'id_producto': 'Nombre del producto',
+            'cantidad': 'Cantidad',
+        },
+        widgets={
+            'id_producto': forms.Select(attrs={'class': 'form-control'}),
+            'cantidad': forms.TextInput(attrs={'class': 'form-control','type': 'number'}),
+        })
     if request.method == 'POST':
         formset = DetalleProductoFormset(request.POST, instance=orden)
         if formset.is_valid():
@@ -42,7 +54,19 @@ def listar_pedidos(request):
 
 def modificar_pedido(request, orden_id):
     orden = OrdenPedido.objects.get(pk=orden_id)
-    DetalleProductoFormset = inlineformset_factory(OrdenPedido, DetalleProducto, fields=('id_producto','cantidad'),extra=1)
+    DetalleProductoFormset = inlineformset_factory(
+        OrdenPedido,
+        DetalleProducto,
+        fields=('id_producto','cantidad'),
+        extra=1,
+        labels = {
+            'id_producto': 'Nombre del producto',
+            'cantidad': 'Cantidad',
+        },
+        widgets={
+            'id_producto': forms.Select(attrs={'class': 'form-control'}),
+            'cantidad': forms.TextInput(attrs={'class': 'form-control','type': 'number'}),
+        })
     if request.method == 'POST':
         formset = DetalleProductoFormset(request.POST, instance=orden)
         if formset.is_valid():

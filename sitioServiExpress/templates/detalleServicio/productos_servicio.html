@@ -1,0 +1,25 @@
+{% extends 'admin/base.html' %}
+{% load static %}
+
+{% block title %}Productos Servicio{% endblock %}
+{% block extrastatic %}{% endblock %}
+{% block content %}
+     <div>
+        <div class="col-md-5">
+            <h1>Detalle Servicio #{{detalle.id}}</h1>
+            <p>Fecha de servicio: {{detalle.fecha_servicio}}
+            <form method="POST">
+                <div class="productos">
+                {{ formset.as_p }}
+                
+                {{ formset.cantidad.errors }}
+                </div>
+                {% csrf_token %}
+                <button type="submit" class="btn btn-primary">Agregar/Guardar</button> 
+                <button type="button" onclick="location.href='{% url 'listar_detalleServicio' %}';"; style="cursor: pointer;"class="btn btn-primary">Terminar</button>
+                
+            </form>
+            <div>
+        </div>
+        
+{% endblock %}
