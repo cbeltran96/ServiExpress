@@ -14,7 +14,7 @@ def agregar_cliente(request):
         if form.is_valid():
             model_instance = form.save(commit=False)
             model_instance.save()
-            return redirect("/listar_clientes")
+            return redirect("/listar_cliente")
     else:
         form = ClienteForm()
         return render(request, "cliente/agregar_cliente.html", {'form': form})

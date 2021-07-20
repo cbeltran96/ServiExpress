@@ -52,11 +52,11 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <div class="modal-body">Esta seguro que desea anular la boleta 
-                            {{boletas.id}}</div>
+                        <div class="modal-body">¿Esta seguro que desea anular la boleta 
+                            {{boletas.id}}?</div>
                         <div class="modal-footer">
                             <a class="btn btn-primary" data-dismiss="modal" aria-label="Close" href="{% url 'list_boleta' %}">Cerrar</a>
-                            <a class="btn btn-danger" href="{% url 'anular_boleta' boletas.id %}">Eliminar</a>
+                            <a class="btn btn-danger" href="{% url 'anular_boleta' boletas.id %}">Anular</a>
                         </div>
                     </div>
                 </div>

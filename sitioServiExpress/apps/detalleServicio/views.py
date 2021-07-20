@@ -25,7 +25,7 @@ def agregar_detalleServicio(request, reserva_id):
             instancia = formulario.save(commit=False)
             instancia.id_reserva_id = reserva_id
             instancia.save()
-            reserva.id_detalle_servicio_id = instancia.id
+            reserva.expired = True
             reserva.save()
             return redirect("productos_servicio", detalle_id=instancia.id)
         else:

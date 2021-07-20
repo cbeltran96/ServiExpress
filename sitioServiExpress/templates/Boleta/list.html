@@ -40,13 +40,13 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel{{metodopago.id}}">Eliminar Proveedor</h5>
+                            <h5 class="modal-title" id="exampleModalLabel{{metodopago.id}}">Eliminar método de pago</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <div class="modal-body">Esta seguro que desea eliminar el proveedor llamado
-                            {{metodopago.metodo_pago}}</div>
+                        <div class="modal-body">¿Esta seguro que desea el metodo de pago 
+                            {{metodopago.metodo_pago}}?</div>
                         <div class="modal-footer">
                             <a class="btn btn-primary" data-dismiss="modal" aria-label="Close" href="{% url 'list_formaPago' %}">Cerrar</a>
                             <a class="btn btn-danger" href="{% url 'eliminar_formaPago' metodopago.id %}">Eliminar</a>

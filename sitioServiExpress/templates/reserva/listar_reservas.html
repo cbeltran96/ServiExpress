@@ -27,7 +27,7 @@
                 
                 
                     {% for reserva in reservas %}
-                    {% if not reserva.id_detalle_servicio %}
+                    {% if not reserva.expired %}
                     
                     <tr>
                         <td>{{ reserva.id }}</td>

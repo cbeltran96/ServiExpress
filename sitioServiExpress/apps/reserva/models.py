@@ -8,7 +8,8 @@ class ReservaServicio(models.Model):
     hora_reserva = models.TimeField(("Hora Reserva"))
     id_usuario = models.ForeignKey("usuario.Usuario", on_delete=models.CASCADE, null=True)
     id_servicio = models.ForeignKey("Servicios.Servicio", on_delete=models.CASCADE)
-    id_detalle_servicio = models.ForeignKey("detalleServicio.DetalleServicio", on_delete=models.CASCADE, null=True)
+    expired = models.BooleanField(default=False)
+    # id_detalle_servicio = models.ForeignKey("detalleServicio.DetalleServicio", on_delete=models.CASCADE, null=True)
     
     def __str__(self):
         return self.id_servicio.nombre_servicio
